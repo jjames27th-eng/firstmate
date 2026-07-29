@@ -1296,6 +1296,17 @@ fi
 TASK_TMP="/tmp/fm-$ID"
 mkdir -p "$TASK_TMP/gotmp"
 
+# Stable Firstmate-owned chrome-devtools session for this home+task. Computed
+# before meta write so browser_session= is recorded, and re-used when exporting
+# into the worker pane shell below. Captain-launched browsers are unaffected.
+# Secondmate agents use their leased home as the identity base so they never
+# collide with the primary home for the same task id.
+if [ "$KIND" = secondmate ]; then
+  BROWSER_SESSION=$(FM_HOME="$PROJ_ABS" "$FM_ROOT/bin/fm-browser-guard.sh" session-id "$ID" 2>/dev/null || true)
+else
+  BROWSER_SESSION=$("$FM_ROOT/bin/fm-browser-guard.sh" session-id "$ID" 2>/dev/null || true)
+fi
+
 # Per-harness turn-end hook where enabled: a file that touches
 # state/<id>.turn-ended when the agent finishes a turn. Worktree-resident hooks
 # and token pointers stay out of git's view so they never block teardown's dirty
@@ -1443,6 +1454,12 @@ META_WINDOW=$T
   echo "mode=$MODE"
   echo "yolo=$YOLO"
   echo "tasktmp=$TASK_TMP"
+  # browser_session is the stable Firstmate-owned chrome-devtools session name
+  # for this home+task (bin/fm-browser-guard.sh). Absent when identity derivation
+  # fails; spawn still proceeds because browser work is optional per task.
+  if [ -n "${BROWSER_SESSION:-}" ]; then
+    echo "browser_session=$BROWSER_SESSION"
+  fi
   echo "model=${MODEL:-default}"
   echo "effort=${EFFORT:-default}"
   # backend= is written only for a non-default (non-tmux) backend, so the
@@ -1509,6 +1526,15 @@ fi
 # process (go build, go test, ...) inherit it. Sent before the launch command so
 # the env is set when the agent starts; the brief sleep lets the export land.
 spawn_send_text_line "$T" "export GOTMPDIR=$TASK_TMP/gotmp"
+# Task-owned chrome-devtools session identity for Firstmate-spawned workers only.
+# Session was computed earlier; all verified harnesses and spawn-capable backends
+# receive these exports through the same pane shell path (tmux, herdr, zellij,
+# orca, cmux). Captain-launched browsers keep the axi default session.
+if [ -n "${BROWSER_SESSION:-}" ]; then
+  spawn_send_text_line "$T" "export CHROME_DEVTOOLS_AXI_SESSION=$BROWSER_SESSION"
+  spawn_send_text_line "$T" "export FM_BROWSER_TASK_ID=$ID"
+  spawn_send_text_line "$T" "export FM_BROWSER_SESSION=$BROWSER_SESSION"
+fi
 sleep 0.3
 spawn_send_literal "$T" "$LAUNCH"
 sleep 0.3

@@ -226,6 +226,23 @@ EOF
 HERDR_SECTION=${HERDR_SECTION%$'\n'}
 fi
 
+# Browser resource guard: always-on short contract for any browser/visual work.
+# Exact flags and lease mechanics stay in bin/fm-browser-guard.sh --help; the
+# agent-only skill owns the conditional procedure.
+BROWSER_HELPER="$FM_ROOT/bin/fm-browser-guard.sh"
+IFS= read -r -d '' BROWSER_SECTION <<EOF || true
+# Browser resource guard
+This home sets \`CHROME_DEVTOOLS_AXI_SESSION\` to a task-owned session for Firstmate-spawned workers.
+Any chrome-devtools, Playwright, Puppeteer, or other disposable browser work must use \`$BROWSER_HELPER\` so the workload is named, leased, and cleaned.
+- One-shot: \`$BROWSER_HELPER run $ID --heavy -- <browser command...>\` (trap cleanup on success, failure, and interrupt).
+- Multi-step or long-lived: \`$BROWSER_HELPER start $ID --heavy\` (or \`--role review --protected\` for a captain review surface), then \`stop\` before any terminal status.
+- Direct Playwright/Puppeteer roots: \`$BROWSER_HELPER register-root $ID --pid <pid>\` after launch so cleanup stays exact.
+- Never \`pkill -f\`, never broad Chrome/Node/Playwright sweeps, never attach to or close the captain's personal Chrome or another task's session.
+- Release the heavy lease before reporting done/failed/blocked terminal results.
+Load \`$FM_ROOT/.agents/skills/browser-resource-guard/SKILL.md\` before browser QA or long-lived review work.
+EOF
+BROWSER_SECTION=${BROWSER_SECTION%$'\n'}
+
 if [ "$KIND" = scout ]; then
 cat > "$BRIEF" <<EOF
 You are a crewmate: an autonomous worker agent managed by firstmate. Work on your own; do not wait for a human.
@@ -234,6 +251,8 @@ You are a crewmate: an autonomous worker agent managed by firstmate. Work on you
 {TASK}
 
 $HERDR_SECTION
+
+$BROWSER_SECTION
 
 # Setup
 You are in a disposable git worktree of $REPO, at a detached HEAD on a clean default branch.
@@ -342,6 +361,8 @@ You are a crewmate: an autonomous worker agent managed by firstmate. Work on you
 {TASK}
 
 $HERDR_SECTION
+
+$BROWSER_SECTION
 
 # Setup
 You are in a disposable git worktree of $REPO, at a detached HEAD on a clean default branch.

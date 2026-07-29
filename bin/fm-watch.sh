@@ -536,6 +536,18 @@ heartbeat_scan_finds_actionable() {
     [ "$surfaced" = "$last" ] && continue
     return 0
   done < <(scan_captain_relevant_statuses "$STATE")
+  # Bounded browser resource detection: orphan sessions, pressure under a heavy
+  # lease, runaway protected reviews (alert only). Prints BROWSER_GUARD: lines
+  # when actionable; any output makes this heartbeat captain-relevant.
+  if command -v "$SCRIPT_DIR/fm-browser-guard.sh" >/dev/null 2>&1 \
+    || [ -x "$SCRIPT_DIR/fm-browser-guard.sh" ]; then
+    local bg_out
+    bg_out=$("$SCRIPT_DIR/fm-browser-guard.sh" detect 2>/dev/null || true)
+    if [ -n "$bg_out" ]; then
+      printf '%s\n' "$bg_out" >> "$STATE/.watch-triage.log" 2>/dev/null || true
+      return 0
+    fi
+  fi
   return 1
 }
 

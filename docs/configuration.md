@@ -11,7 +11,7 @@ The shared orchestrator behavior lives in [`AGENTS.md`](../AGENTS.md) - edit it 
 This section is the single owner of the top-level operational-home layout; producer script headers and their help own exact child-file fields and mutation contracts.
 The tracked code root contains the shared instruction, skill, documentation, workflow, and `bin/` surfaces, while each effective `FM_HOME` contains private operational directories.
 `data/` holds durable private fleet records such as the project and secondmate registries, captain preferences, optional shared captain preferences, learnings, backlog, briefs, and scout reports.
-`state/` holds volatile runtime records such as task metadata, append-only status events, endpoint signals, watcher and wake-queue coordination, away-mode state, generated X-mode artifacts, private secondmate config-reread generations with their retry and quarantine state, and parent-owned secondmate pending-reply records under `state/pending-replies/` (`bin/fm-pending-reply-lib.sh`).
+`state/` holds volatile runtime records such as task metadata, append-only status events, endpoint signals, watcher and wake-queue coordination, away-mode state, generated X-mode artifacts, private secondmate config-reread generations with their retry and quarantine state, parent-owned secondmate pending-reply records under `state/pending-replies/` (`bin/fm-pending-reply-lib.sh`), and per-task browser ownership evidence at `state/<id>.browser-guard` (`bin/fm-browser-guard.sh`).
 `config/` holds local gitignored operating choices, and `projects/` holds the local project clones that Firstmate reads but changes only through the guarded exceptions in `AGENTS.md`.
 
 `bin/fm-spawn.sh` owns the base task-metadata fields it emits, while the runtime-backend section below owns backend-specific fields and selector interpretation.
@@ -22,6 +22,22 @@ Wake, watcher, away-mode, and X-specific state mechanics remain with their named
 `docs/sessionstart-nudge.md` owns the native session-open adapter mechanics that nudge the digest command.
 `AGENTS.md` retains the run-once and read-once operator rules, lock-refusal safety, installation consent, and direct-report recovery boundaries because those facts apply at every session start.
 Ordinary dead-direct-report recovery is owned by `stuck-crewmate-recovery`, while persistent-secondmate recovery is owned by `secondmate-provisioning`.
+
+## Browser resource guard (config/browser-heavy-slots)
+
+Firstmate owns task browser identity, a machine-wide heavy browser lease, exact session cleanup, and cheap orphan or pressure detection through `bin/fm-browser-guard.sh`.
+Spawned workers receive a task-owned `CHROME_DEVTOOLS_AXI_SESSION` derived from the effective home plus task id so concurrent homes never share a default bridge.
+The machine-wide heavy lease lives under `/tmp/firstmate-browser-guard-<uid>/heavy/` (not inside any one home) so main and secondmate homes serialize visual QA rather than each believing they own a separate slot.
+
+Optional local gitignored `config/browser-heavy-slots` holds a positive integer concurrent heavy-browser budget.
+Absent or invalid means `1`.
+Raise it only when the machine can support more concurrent headless browsers; the default is intentionally one heavy disposable workload at a time.
+Long-lived captain review surfaces may register as protected light ownership while one disposable test holds the heavy lease; that exception never authorizes two heavy renderers.
+
+Private per-task evidence is `state/<id>.browser-guard` (session, lease slot, optional registered Playwright roots, protected flag).
+Detection runs at locked session-start and from the watcher heartbeat scan and prints `BROWSER_GUARD:` lines only when actionable.
+Automatic action cleans only exact unambiguous Firstmate-owned disposable sessions; protected reviews and foreign-home sessions alert only.
+Captain-launched browsers that never set a Firstmate session remain on the chrome-devtools default and are never targeted.
 
 ## Pi Calm preference (config/calm)
 

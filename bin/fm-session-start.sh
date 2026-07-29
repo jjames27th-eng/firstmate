@@ -272,6 +272,9 @@ if [ "$READ_ONLY" -eq 1 ]; then
 else
   BOOT_OUT=$(
     "$SCRIPT_DIR/fm-herdr-session-cleanup.sh" 2>&1 || true
+    # Bounded Firstmate-owned browser orphan/pressure/review alarms (never
+    # closes protected or foreign work). Owner: bin/fm-browser-guard.sh.
+    "$SCRIPT_DIR/fm-browser-guard.sh" detect 2>&1 || true
     "$SCRIPT_DIR/fm-bootstrap.sh" 2>&1
   )
 fi
