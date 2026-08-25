@@ -1,0 +1,25 @@
+# Constructed launch commands captured from bin/fm-spawn.sh
+# Environment injected: CLAUDE_CODE_CHILD_SESSION=1 (as a Herdr child pane would inherit)
+# Captured from the fake tmux send-keys -l sink (no live Herdr spawn).
+
+=== Claude CREWMATE launch (crew-harness=claude) ===
+env -u CLAUDE_CODE_CHILD_SESSION -u CURSOR_AGENT -u CURSOR_INVOKED_AS CLAUDE_CODE_ENABLE_PROMPT_SUGGESTION=false claude --dangerously-skip-permissions "$('/Users/james/.no-mistakes/worktrees/03f7a29d4e35/01M0VHSZRCJMN20J5DK9R03391/state/n/worktrees/55783a7fd2ac/01M0VVG7RPVH9ZX4YE8BPYE2RR/bin/fm-operational-input.sh' encode launch-brief < '/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T//fm-spawn-dispatch-profile.0xI6pt/evid-child-session/home/data/evid-claude-crew/brief.md')"
+
+
+=== Claude SCOUT launch (--scout) ===
+env -u CLAUDE_CODE_CHILD_SESSION -u CURSOR_AGENT -u CURSOR_INVOKED_AS CLAUDE_CODE_ENABLE_PROMPT_SUGGESTION=false claude --dangerously-skip-permissions "$('/Users/james/.no-mistakes/worktrees/03f7a29d4e35/01M0VHSZRCJMN20J5DK9R03391/state/n/worktrees/55783a7fd2ac/01M0VVG7RPVH9ZX4YE8BPYE2RR/bin/fm-operational-input.sh' encode launch-brief < '/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T//fm-spawn-dispatch-profile.0xI6pt/evid-child-session/home/data/evid-claude-scout/brief.md')"
+
+
+=== Claude SECONDMATE launch (--secondmate) ===
+FM_ROOT_OVERRIDE= FM_STATE_OVERRIDE= FM_DATA_OVERRIDE= FM_PROJECTS_OVERRIDE= FM_CONFIG_OVERRIDE= FM_PUBLIC_FOLLOWUP_PRIMARY_HOME='/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T//fm-spawn-dispatch-profile.0xI6pt/evid-child-session/home' FM_HOME='/private/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T/fm-spawn-dispatch-profile.0xI6pt/evid-child-session/secondmate-home' FM_TRACE_CONTEXT=off FM_SUPERVISION_MODEL=autoarm env -u CLAUDE_CODE_CHILD_SESSION -u CURSOR_AGENT -u CURSOR_INVOKED_AS CLAUDE_CODE_ENABLE_PROMPT_SUGGESTION=false claude --dangerously-skip-permissions "$('/Users/james/.no-mistakes/worktrees/03f7a29d4e35/01M0VHSZRCJMN20J5DK9R03391/state/n/worktrees/55783a7fd2ac/01M0VVG7RPVH9ZX4YE8BPYE2RR/bin/fm-operational-input.sh' encode launch-brief < '/private/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T/fm-spawn-dispatch-profile.0xI6pt/evid-child-session/secondmate-home/data/charter.md')"
+
+
+=== Codex launch (--harness codex, NON-Claude control) ===
+env -u CURSOR_AGENT -u CURSOR_INVOKED_AS codex --dangerously-bypass-approvals-and-sandbox -c "notify=[\"bash\",\"-c\",\"touch '/private/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T/fm-spawn-dispatch-profile.0xI6pt/evid-child-session/home/state/evid-codex.turn-ended'\"]" "$('/Users/james/.no-mistakes/worktrees/03f7a29d4e35/01M0VHSZRCJMN20J5DK9R03391/state/n/worktrees/55783a7fd2ac/01M0VVG7RPVH9ZX4YE8BPYE2RR/bin/fm-operational-input.sh' encode launch-brief < '/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T//fm-spawn-dispatch-profile.0xI6pt/evid-child-session/home/data/evid-codex/brief.md')"
+
+
+--- Verification ---
+PASS  Claude CREWMATE   scrubs CLAUDE_CODE_CHILD_SESSION
+PASS  Claude SCOUT      scrubs CLAUDE_CODE_CHILD_SESSION
+PASS  Claude SECONDMATE scrubs CLAUDE_CODE_CHILD_SESSION
+PASS  Codex (non-Claude) does NOT receive the Claude-specific scrub

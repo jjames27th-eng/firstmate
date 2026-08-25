@@ -1,0 +1,20 @@
+# bin/fm-bootstrap.sh session-start toolchain report (real CLI invocation, stdout contract)
+# Only the no-mistakes version varies; every other required tool is present & current.
+# Floor: NO_MISTAKES_MIN=1.57.0 (tracks latest stable release; pre-attestation clients rejected).
+
+=== current floor, attestation-capable (v1.57.0) ===
+no-mistakes --version -> no-mistakes version v1.57.0 (fake)
+bootstrap stdout      -> (silent: toolchain accepted, session start proceeds)
+
+=== newer minor accepted (v1.58.0) ===
+no-mistakes --version -> no-mistakes version v1.58.0 (fake)
+bootstrap stdout      -> (silent: toolchain accepted, session start proceeds)
+
+=== pre-attestation client rejected (v1.37.0) ===
+no-mistakes --version -> no-mistakes version v1.37.0 (fake)
+bootstrap stdout      -> MISSING: no-mistakes (install: curl -fsSL https://raw.githubusercontent.com/kunchenguid/no-mistakes/main/docs/install.sh | sh)
+
+=== older patch below floor rejected (v1.56.9) ===
+no-mistakes --version -> no-mistakes version v1.56.9 (fake)
+bootstrap stdout      -> MISSING: no-mistakes (install: curl -fsSL https://raw.githubusercontent.com/kunchenguid/no-mistakes/main/docs/install.sh | sh)
+
