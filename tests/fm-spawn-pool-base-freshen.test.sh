@@ -1206,6 +1206,9 @@ test_dirty_pool_retry_preserves_the_copy() {
   [ "$status" -ne 0 ] || fail 'dirty copy launched'
   assert_contains "$out" 'is not clean' 'spawn did not refuse the dirty copy'
   assert_contains "$out" 'treehouse return --force' 'refusal omitted the explicit release command'
+  if [ "${FM_TEST_EVIDENCE:-0}" = 1 ]; then
+    printf '# Dirty-copy refusal\n$ bin/fm-spawn.sh %s %s --scout\n%s\nexit=%s\n' "$id" "$PROJECT_DIR" "$out" "$status"
+  fi
   [ ! -e "$HOME_DIR/state/$id.meta" ] || fail 'refused spawn published metadata'
   assert_grep "$id" "$CASE_DIR/slots/1/.test-treehouse-lease" 'refusal dropped the durable lease'
   "$FAKEBIN_DIR/tmux" kill-window -t "firstmate:fm-$id"
@@ -1217,6 +1220,14 @@ test_dirty_pool_retry_preserves_the_copy() {
   [ "$(git -C "$dirty" diff HEAD)" = "$diff_before" ] || fail 'retry changed refused tracked edits'
   [ "$(git -C "$dirty" ls-files --stage)" = "$index_before" ] || fail 'retry changed the refused index'
   assert_grep 'untracked work' "$dirty/untracked.txt" 'retry lost the refused untracked file'
+  if [ "${FM_TEST_EVIDENCE:-0}" = 1 ]; then
+    printf '# Retry after terminal loss\n$ bin/fm-spawn.sh %s %s --scout\n%s\nexit=%s\n' "$id" "$PROJECT_DIR" "$out" "$status"
+    printf 'Refused copy HEAD before=%s after=%s\n' "$before" "$(git -C "$dirty" rev-parse HEAD)"
+    printf 'Refused copy staged index before:\n%s\nafter:\n%s\n' "$index_before" "$(git -C "$dirty" ls-files --stage)"
+    printf 'Refused copy tracked edits before:\n%s\nafter:\n%s\n' "$diff_before" "$(git -C "$dirty" diff HEAD)"
+    printf 'Refused copy untracked file:\n'; cat "$dirty/untracked.txt"
+    printf 'Retry task record:\n'; cat "$HOME_DIR/state/$id.meta"
+  fi
   pass 'a dirty-copy refusal retains its lease and every edit while retry uses another copy'
 }
 
@@ -1250,6 +1261,12 @@ test_recorded_secondmate_slot_is_never_reused() {
   out=$(run_spawn "$id" --scout)
   status=$?
   expect_code 0 "$status" "spawn should protect the recorded secondmate copy ($mode)"$'\n'"$out"
+  if [ "${FM_TEST_EVIDENCE:-0}" = 1 ]; then
+    printf '# Recorded secondmate copy (%s), initial spawn\n$ bin/fm-spawn.sh %s %s --scout\n%s\nexit=%s\n' "$mode" "$id" "$PROJECT_DIR" "$out" "$status"
+    printf 'Secondmate task record:\n'; cat "$second/state/paused-scout.meta"
+    printf 'Protected copy lease holder:\n'; cat "$CASE_DIR/slots/1/.test-treehouse-lease"
+    printf 'New task record:\n'; cat "$HOME_DIR/state/$id.meta"
+  fi
   assert_grep "worktree=$CASE_DIR/slots/2/project" "$HOME_DIR/state/$id.meta" 'spawn reused the secondmate slot'
   [ "$(git -C "$POOL_DIR" rev-parse HEAD)" = "$before" ] || fail "spawn reset the paused scout's detached commit"
   if [ "$mode" != default-tip ]; then
@@ -1267,6 +1284,11 @@ test_recorded_secondmate_slot_is_never_reused() {
   expect_code 0 "$status" "another spawn should skip recorded copies after restart"$'\n'"$out"
   assert_grep "worktree=$CASE_DIR/slots/3/project" "$HOME_DIR/state/$id-next.meta" 'another spawn reused a recorded slot'
   [ "$(git -C "$POOL_DIR" rev-parse HEAD)" = "$before" ] || fail 'another spawn reset the recorded copy'
+  if [ "${FM_TEST_EVIDENCE:-0}" = 1 ]; then
+    printf '# Another spawn after terminal loss (%s)\n$ bin/fm-spawn.sh %s-next %s --scout\n%s\nexit=%s\n' "$mode" "$id" "$PROJECT_DIR" "$out" "$status"
+    printf 'Protected secondmate HEAD before=%s after=%s\n' "$before" "$(git -C "$POOL_DIR" rev-parse HEAD)"
+    printf 'Next task record:\n'; cat "$HOME_DIR/state/$id-next.meta"
+  fi
   pass "spawn protects recorded copies across homes and restarts ($mode)"
 }
 
