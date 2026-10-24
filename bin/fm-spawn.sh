@@ -5262,6 +5262,42 @@ elif [ "$RELAUNCH" -eq 1 ]; then
   fi
   [ "$KIND" = secondmate ] || validate_spawn_worktree "relaunch" "$T"
 elif [ "$KIND" != secondmate ] && [ "$BACKEND" != orca ]; then
+  spawn_protect_recorded_pool_copies() {
+    local state_dir meta field recorded slot_name lease_state leased_path
+    [ "$SPAWN_TREEHOUSE_PROJECT_LOCK_HELD" = 1 ] || return 1
+    fm_local_firstmate_state_dirs "$STATE" || {
+      echo "error: $FM_LOCAL_FIRSTMATE_ERROR; refusing Treehouse acquisition" >&2
+      return 1
+    }
+    for state_dir in "${FM_LOCAL_FIRSTMATE_STATES[@]}"; do
+      for meta in "$state_dir"/*.meta; do
+        [ -e "$meta" ] || [ -L "$meta" ] || continue
+        [ -f "$meta" ] && [ ! -L "$meta" ] && [ -r "$meta" ] || return 1
+        for field in worktree home; do
+          recorded=$(fm_meta_get "$meta" "$field") || return 1
+          [ -n "$recorded" ] || continue
+          fm_treehouse_pool_slot "$PROJ_ABS" "$recorded" || continue
+          recorded=$(real_path_or_raw "$recorded")
+          lease_state=$(cd "$PROJ_ABS" && treehouse status --json) || return 1
+          slot_name=$(printf '%s\n' "$lease_state" | jq -er --arg path "$recorded" '
+            map(select(.path == $path)) |
+            if length != 1 then error("recorded copy missing from pool status")
+            elif .[0].status == "leased" then "leased"
+            else .[0].name end
+          ') || return 1
+          [ "$slot_name" != leased ] || continue
+          [ "$slot_name" = "$(basename "$(dirname "$recorded")")" ] || return 1
+          leased_path=$(cd "$PROJ_ABS" && treehouse lease "$slot_name" --lease-holder "$(basename "$meta" .meta)") || return 1
+          [ -d "$leased_path" ] &&
+            [ "$(real_path_or_raw "$leased_path")" = "$recorded" ] || return 1
+        done
+      done
+    done
+  }
+  if ! spawn_protect_recorded_pool_copies; then
+    echo "error: could not protect locally recorded Treehouse copies; refusing to acquire or reset a pooled worktree" >&2
+    exit 1
+  fi
   spawn_send_text_line "$WT_TARGET" 'treehouse get'
 
   # Wait for the treehouse subshell: the pane's cwd moves from the project to the worktree.
