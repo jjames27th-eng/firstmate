@@ -1,0 +1,24 @@
+REAL TREEHOUSE CLI RECOVERY EVIDENCE
+Command: TMPDIR="$PWD/.test-phase-tmp" FM_TEST_EVIDENCE=1 bash tests/fm-treehouse-lease-e2e.test.sh
+Treehouse: v3.1.5, real executable, isolated HOME and pool.
+Kills only the test-owned acquisition processes, then exercises retry, prune, normal shell exit, status, and explicit return.
+Exit=0. This is process-death recovery, not a physical machine reboot.
+
+🌳 Setting up worktree...
+🌳 Leased worktree at /Users/james/.no-mistakes/worktrees/6b06b88933e4/01M5P477R3QKBCK7FXRWQP0HKX/.test-phase-tmp/fm-treehouse-lease.4ch5eD/pools/.treehouse/project-03b4e8/2/project. Run 'treehouse return /Users/james/.no-mistakes/worktrees/6b06b88933e4/01M5P477R3QKBCK7FXRWQP0HKX/.test-phase-tmp/fm-treehouse-lease.4ch5eD/pools/.treehouse/project-03b4e8/2/project' to release it.
+# v3.1.5: paused=/Users/james/.no-mistakes/worktrees/6b06b88933e4/01M5P477R3QKBCK7FXRWQP0HKX/.test-phase-tmp/fm-treehouse-lease.4ch5eD/pools/.treehouse/project-03b4e8/1/project retry=/Users/james/.no-mistakes/worktrees/6b06b88933e4/01M5P477R3QKBCK7FXRWQP0HKX/.test-phase-tmp/fm-treehouse-lease.4ch5eD/pools/.treehouse/project-03b4e8/2/project before=530f1517cddb77d0905e97bcbc6cc0973cab97df after=530f1517cddb77d0905e97bcbc6cc0973cab97df
+🌳 No stale worktrees to prune.
+ok - real Treehouse keeps the crashed owner copy and detached commit on retry and prune
+# Ordinary shell exit
+🌳 Setting up worktree...
+🌳 Entered worktree at /Users/james/.no-mistakes/worktrees/6b06b88933e4/01M5P477R3QKBCK7FXRWQP0HKX/.test-phase-tmp/fm-treehouse-lease.4ch5eD/pools/.treehouse/project-03b4e8/3/project. Type 'exit' to return.
+🌳 Leased worktree 3 at /Users/james/.no-mistakes/worktrees/6b06b88933e4/01M5P477R3QKBCK7FXRWQP0HKX/.test-phase-tmp/fm-treehouse-lease.4ch5eD/pools/.treehouse/project-03b4e8/3/project. Run 'treehouse return /Users/james/.no-mistakes/worktrees/6b06b88933e4/01M5P477R3QKBCK7FXRWQP0HKX/.test-phase-tmp/fm-treehouse-lease.4ch5eD/pools/.treehouse/project-03b4e8/3/project' to release it.
+🌳 Not returning /Users/james/.no-mistakes/worktrees/6b06b88933e4/01M5P477R3QKBCK7FXRWQP0HKX/.test-phase-tmp/fm-treehouse-lease.4ch5eD/pools/.treehouse/project-03b4e8/3/project to the pool: owner precondition failed: it is now durably leased (holder: "paused-scout"); leaving it exactly as it is.
+Exited worker copy=/Users/james/.no-mistakes/worktrees/6b06b88933e4/01M5P477R3QKBCK7FXRWQP0HKX/.test-phase-tmp/fm-treehouse-lease.4ch5eD/pools/.treehouse/project-03b4e8/3/project HEAD=fe59799978580f3188513ec3f0aff58fc7fe5b86
+$ treehouse status --json
+[{"name":"1","path":"/Users/james/.no-mistakes/worktrees/6b06b88933e4/01M5P477R3QKBCK7FXRWQP0HKX/.test-phase-tmp/fm-treehouse-lease.4ch5eD/pools/.treehouse/project-03b4e8/1/project","status":"leased","branch":"","detached":true,"flavor":"git","lease_id":"41af22c006498b76360e275a28beaed7","lease_holder":"paused-scout","leased_at":"2026-10-24T12:19:34.595156+07:00","processes":[]},{"name":"2","path":"/Users/james/.no-mistakes/worktrees/6b06b88933e4/01M5P477R3QKBCK7FXRWQP0HKX/.test-phase-tmp/fm-treehouse-lease.4ch5eD/pools/.treehouse/project-03b4e8/2/project","status":"leased","branch":"","detached":true,"flavor":"git","lease_id":"84126efa042c8f9e52783b28085e0347","lease_holder":"retry","leased_at":"2026-10-24T12:19:35.425591+07:00","processes":[]},{"name":"3","path":"/Users/james/.no-mistakes/worktrees/6b06b88933e4/01M5P477R3QKBCK7FXRWQP0HKX/.test-phase-tmp/fm-treehouse-lease.4ch5eD/pools/.treehouse/project-03b4e8/3/project","status":"leased","branch":"","detached":true,"flavor":"git","lease_id":"80cc8dc951f86b8d3bd5177ebf5722da","lease_holder":"paused-scout","leased_at":"2026-10-24T12:19:36.613413+07:00","processes":[]}]
+$ treehouse return --force /Users/james/.no-mistakes/worktrees/6b06b88933e4/01M5P477R3QKBCK7FXRWQP0HKX/.test-phase-tmp/fm-treehouse-lease.4ch5eD/pools/.treehouse/project-03b4e8/1/project
+🌳 Worktree returned to pool.
+Explicitly returned copy HEAD before=530f1517cddb77d0905e97bcbc6cc0973cab97df after=5b32e033db04fb9b3ccb3f072d623f59502d7cf2
+Other leased copy HEAD before=fe59799978580f3188513ec3f0aff58fc7fe5b86 after=fe59799978580f3188513ec3f0aff58fc7fe5b86
+ok - lease takeover survives shell exit and only explicit return resets its copy

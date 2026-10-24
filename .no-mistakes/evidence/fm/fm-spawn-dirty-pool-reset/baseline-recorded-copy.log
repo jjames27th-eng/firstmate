@@ -1,0 +1,30 @@
+BASELINE REPRODUCTION
+Base: d22640f478e3392313e27b04fb41de12bd25d2e7
+Executed the current default-tip secondmate regression against the base fm-spawn.sh in an isolated copy of bin/ and tests/.
+Other helper scripts remain at the target revision. Terminal and Treehouse are stateful test doubles; Git repositories and task records are real.
+Command: TMPDIR="$PWD/.test-phase-tmp" FM_TEST_EVIDENCE=1 bash .test-phase-tmp/baseline/tests/fm-spawn-pool-base-freshen.test.sh
+Expected exit=1: old spawn assigns the recorded copy to another task.
+
+# Recorded secondmate copy (default-tip), initial spawn
+$ bin/fm-spawn.sh pool-paused-secondmate-default-tip-r1 /Users/james/.no-mistakes/worktrees/6b06b88933e4/01M5P477R3QKBCK7FXRWQP0HKX/.test-phase-tmp/fm-spawn-pool-base-freshen.o6V7rS/paused-secondmate-default-tip/project --scout
+spawned pool-paused-secondmate-default-tip-r1 harness=codex kind=scout window=firstmate:fm-pool-paused-secondmate-default-tip-r1 worktree=/Users/james/.no-mistakes/worktrees/6b06b88933e4/01M5P477R3QKBCK7FXRWQP0HKX/.test-phase-tmp/fm-spawn-pool-base-freshen.o6V7rS/paused-secondmate-default-tip/slots/1/project
+exit=0
+Secondmate task record:
+kind=scout
+worktree=/Users/james/.no-mistakes/worktrees/6b06b88933e4/01M5P477R3QKBCK7FXRWQP0HKX/.test-phase-tmp/fm-spawn-pool-base-freshen.o6V7rS/paused-secondmate-default-tip/slots/1/project
+project=/Users/james/.no-mistakes/worktrees/6b06b88933e4/01M5P477R3QKBCK7FXRWQP0HKX/.test-phase-tmp/fm-spawn-pool-base-freshen.o6V7rS/paused-secondmate-default-tip/project
+Protected copy lease holder:
+cat: /Users/james/.no-mistakes/worktrees/6b06b88933e4/01M5P477R3QKBCK7FXRWQP0HKX/.test-phase-tmp/fm-spawn-pool-base-freshen.o6V7rS/paused-secondmate-default-tip/slots/1/.test-treehouse-lease: No such file or directory
+New task record:
+window=firstmate:fm-pool-paused-secondmate-default-tip-r1
+endpoint_task_id=pool-paused-secondmate-default-tip-r1
+worktree=/Users/james/.no-mistakes/worktrees/6b06b88933e4/01M5P477R3QKBCK7FXRWQP0HKX/.test-phase-tmp/fm-spawn-pool-base-freshen.o6V7rS/paused-secondmate-default-tip/slots/1/project
+project=/Users/james/.no-mistakes/worktrees/6b06b88933e4/01M5P477R3QKBCK7FXRWQP0HKX/.test-phase-tmp/fm-spawn-pool-base-freshen.o6V7rS/paused-secondmate-default-tip/project
+harness=codex
+approval_mode=bypass
+kind=scout
+tasktmp=/tmp/fm-pool-paused-secondmate-default-tip-r1
+model=default
+effort=default
+spawn_gen=s1792819199.16946.22729
+not ok - spawn reused the secondmate slot
