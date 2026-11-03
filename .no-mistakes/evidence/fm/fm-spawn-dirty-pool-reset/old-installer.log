@@ -1,0 +1,3 @@
+fm-install-treehouse.sh: downloading treehouse-v2.0.1-darwin-arm64.tar.gz from https://github.com/kunchenguid/treehouse/releases/download/v2.0.1/treehouse-v2.0.1-darwin-arm64.tar.gz
+fm-install-treehouse.sh: installed treehouse v2.0.1 to {run-worktree}/.test-live/oldpin/treehouse
+v2.0.1

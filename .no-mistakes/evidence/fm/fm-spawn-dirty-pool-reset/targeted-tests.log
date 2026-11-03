@@ -1,0 +1,682 @@
+FM_TEST_BEGIN 2026-11-03T00:43:01Z tests/fm-backend-t3code.test.sh family=backend-dispatch expected_gate_skip=none
+fm-afk-launch: away-posture record archived at /private/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T/fm-test-run.zEm7vl/w1/tmp/fm-backend-t3code-tests.vVzRcy/restart-unknown-completed/home/state/afk-contracts/1793666583.afk-contract
+fm-afk-launch: away mode stopped; no daemon terminal was running, .afk cleared, and the posture record archived
+fm-afk-launch: away-posture record archived at /private/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T/fm-test-run.zEm7vl/w1/tmp/fm-backend-t3code-tests.vVzRcy/restart-unknown-failed/home/state/afk-contracts/1793666588.afk-contract
+fm-afk-launch: away mode stopped; no daemon terminal was running, .afk cleared, and the posture record archived
+ok - native restart re-arms discarded T3 stale warnings exactly once and preserves delivered suppression
+ok - away housekeeping preserves unknown stale rechecks and reports possible wedges until work resumes
+ok - away daemon on T3: a stall reported while unknown is not reported again once T3 reads idle
+ok - T3 stale watcher: harness=codex status=failed turn=fresh -> dead
+ok - t3code: a failed thread read reports unknown busy state, submits no away-mode injection, and keeps stale rechecks uncertain
+ok - T3 stale lookup honors paused and captain-held declarations
+ok - T3 stale watcher: harness=codex status=running turn=fresh -> absorb
+ok - T3 stale watcher: harness=claude status=running turn=fresh -> absorb
+ok - T3 stale watcher: harness=codex status=waiting turn=fresh -> absorb
+ok - T3 stale watcher: harness=codex status=starting turn=fresh -> surface
+ok - T3 stale watcher: harness=codex status=completed turn=fresh -> surface
+ok - T3 stale watcher: harness=codex status=failed turn=fresh -> dead
+ok - T3 stale watcher: harness=codex status=running turn=hung -> surface
+ok - fm_backend_t3code_runtime_check: a missing credential names the sign-in
+ok - fm_backend_t3code_runtime_check: a 401 names the fresh sign-in
+warning: T3 telemetry at http://127.0.0.1:50754 is on; run the server that hosts Firstmate workers with T3CODE_TELEMETRY_ENABLED=false (docs/t3code-backend.md)
+ok - fm_backend_t3code_runtime_check: the tools/list gate and environment pin refuse control and teardown without a mutation
+ok - fm_backend_t3code_project_ensure: matches by realpath, otherwise creates with the fm- title
+ok - fm_backend_t3code_model_selection: T3's catalog decides driver, model, and effort; overrides keep other options; default handling, instances file
+ok - fm_backend_t3code_thread_create/turn_start: verified t3_thread_launch and t3_thread_send payloads
+ok - fm_backend_t3code_thread_create: a lost reply is uncertain and never retried; a mis-bound thread is archived and refused
+ok - fm_backend_t3code_thread_for_home: zero, one, ambiguous, and unreachable
+ok - T3 requires explicit selection and does not query the server during runtime detection
+ok - fm_backend_t3code_capture: renders the activity tail and the thread's status line
+ok - fm_backend_t3code_send_key: Escape and C-c interrupt, Enter no-ops, others refuse
+ok - fm_backend_t3code_send_text_submit: empty on accept, send-failed on rejection
+ok - t3code send: a reply lost after commit is unconfirmed through the adapter and fm-send, and the resend lands once
+ok - t3code send: a held request id stays unconfirmed when the next attempt fails locally, and the retry lands once
+ok - t3code send: a lost reply to a secondmate names its armed correlation instead of advising a resend
+ok - t3code status table: every V2 thread status, a pending request, archived, archived-but-draining, missing, unreachable, and unreadable rows
+ok - t3code push wait: a pending question wakes the supervisor once with how to answer it, approvals are named apart, and answering clears it
+ok - fm-t3-answer.sh: lists a T3 worker's pending questions and answers one by request id
+ok - secondmate liveness backend=t3code: a failed run is resumed on its own thread, never archived and replaced
+ok - secondmate liveness backend=t3code: a missing thread re-proves its archive before replacement, and an unproved close spawns nothing
+ok - away daemon on T3: an unconfirmed digest is frozen and retried verbatim; a later event goes in the next digest, each event once
+ok - away daemon on T3: a delivered frozen digest leaves the items behind it with the first one's undelivered age
+ok - away daemon on T3: a supervisor thread waiting on a pending request defers digests until it is answered
+ok - t3code helper: runs through a symlinked Firstmate root, and a kill that cannot read the thread fails closed
+ok - secondmate liveness backend=t3code: an archived thread whose run still drains is left in place, not replaced
+ok - fm_backend_t3code_kill: interrupt then archive with a proven close, idempotent on archived and missing, loud on failure
+ok - fm-backend dispatcher: routes every t3code primitive, validates and resolves t3_thread_id records, and joins the push wait
+ok - T3 harness admission refuses every non-T3 adapter and launch-time typing refuses without a thread read
+ok - fm_busy_classify: t3code native busy, idle, and unknown are trusted without a record
+ok - fm-control-lib: t3code key set, state-verified, no-exit, and no-replacement membership
+ok - fm-control.sh backend=t3code: exit refuses before any call (V2 has no session stop); interrupt ends the turn natively
+ok - fm-control.sh relaunch backend=t3code: refused before anything is stopped, by the control plane and by the launch owner
+ok - fm-spawn.sh --backend t3code: leases the slot, launches the thread on it, records metadata, sends the launch brief
+ok - t3code Claude PR-tool clause: dropped only at or past the verified T3 build, kept for older or unreadable servers
+note: test_spawn_codex_preserves_tracked_codex_config skipped: no Python 3.11+ (tomllib) interpreter on PATH
+note: test_tracked_codex_overlay_recovery skipped: no Python 3.11+ (tomllib) interpreter on PATH
+not ok - the refusal must name the policy table (missing: '[shell_environment_policy]')
+--- output ---
+warning: T3 telemetry at http://127.0.0.1:50754 is on; run the server that hosts Firstmate workers with T3CODE_TELEMETRY_ENABLED=false (docs/t3code-backend.md)
+error: /private/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T/fm-test-run.zEm7vl/w1/tmp/fm-backend-t3code-tests.vVzRcy/spawn-codex-tracked/spawn-project/.codex/config.toml: Python 3.11+ with tomllib is required to validate tracked configuration
+FM_TEST_END 2026-11-03T00:46:08Z tests/fm-backend-t3code.test.sh exit=1 duration_ms=187438 gate_skip=false
+FM_TEST_BEGIN 2026-11-03T00:46:08Z tests/fm-bootstrap.test.sh family=session-bootstrap expected_gate_skip=none
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+ok - bootstrap reports treehouse lease + tasks-axi/quota-axi bootstrap contracts
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+ok - bootstrap: an absent-tool case hides the tool in the fallback base path
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+ok - bootstrap separates an absent no-mistakes from one below its version floor
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+ok - bootstrap separates an absent gh-axi from one below its version floor
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+ok - bootstrap preserves legacy Lavish boards while recommending synchronous reply support
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+ok - bootstrap separates an absent tasks-axi from one below its floor or feature probe
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+ok - bootstrap separates an absent quota-axi from one below its version floor
+ok - bootstrap requires git with an install instruction
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+ok - bootstrap: backend=orca gates the Orca CLI without requiring it on the default backend
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+ok - bootstrap: session-provider backends require their own CLI + jq + treehouse, never tmux
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+ok - bootstrap: a session-provider backend gates its own CLI, never a false tmux requirement
+ok - bootstrap: Herdr manual-install guidance is never executed as a shell command
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+ok - bootstrap: the bundled cmux CLI satisfies the active backend dependency
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+ok - bootstrap: unknown resolved backends fail closed with an actionable diagnostic
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+ok - bootstrap: JSON-emitting backends require jq (their genuine dep), never tmux
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+ok - bootstrap: the treehouse lease check follows the resolved backend's worktree provider
+ok - bootstrap computes a fleet-size-aware default timeout and preserves partial fleet-sync output
+ok - bootstrap keeps the quick 20s default for small fleets
+ok - bootstrap preserves FM_FLEET_SYNC_BOOTSTRAP_TIMEOUT as an explicit override
+ok - bootstrap treats a blank timeout override as unset
+ok - bootstrap computes the timeout before launching fleet sync
+ok - bootstrap keeps routine tasks-axi, harness, dispatch, and already-live liveness confirmations silent
+ok - bootstrap routine contract runs under system /bin/bash
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+ok - bootstrap: FM_BOOTSTRAP_NETWORK partitions one run into local and network halves
+ok - bootstrap: every deferred mutating sweep rechecks fleet-lock ownership
+ok - bootstrap: each deferred network phase, secondmate, and clone records its own elapsed time
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+ok - bootstrap: the tasks-axi compatibility verdict and reason travel exactly one process hop
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+ok - bootstrap surfaces active crew-dispatch rules only as verbose BOOTSTRAP_INFO
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+ok - bootstrap arms the PR health monitor only when config/pr-health-monitor exists
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+ok - bootstrap validates preferred_provider with and without resolver opt-in
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+ok - bootstrap gates resolver fields and additive harnesses on the typed key or a declared typesafe source
+FM_TEST_END 2026-11-03T00:58:33Z tests/fm-bootstrap.test.sh exit=0 duration_ms=744801 gate_skip=false
+FM_TEST_BEGIN 2026-11-03T00:58:33Z tests/fm-spawn-pool-base-freshen.test.sh family=standalone expected_gate_skip=none
+ok - old Treehouse, lease failure and path mismatch refuse before refreshing the base
+# Dirty-copy refusal
+$ bin/fm-spawn.sh pool-dirty-retry-r1 /private/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T/fm-test-run.zEm7vl/w3/tmp/fm-spawn-pool-base-freshen.zSOkap/dirty-retry/project --scout
+error: pooled worktree '/private/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T/fm-test-run.zEm7vl/w3/tmp/fm-spawn-pool-base-freshen.zSOkap/dirty-retry/slots/1/project' is not clean; refusing to discard uncommitted work while refreshing its base
+warning: Treehouse lease for task pool-dirty-retry-r1 on /private/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T/fm-test-run.zEm7vl/w3/tmp/fm-spawn-pool-base-freshen.zSOkap/dirty-retry/slots/1/project was left in place; a refusal never releases or resets its copy.
+After inspecting and deciding to discard that copy, release it explicitly: (cd '/private/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T/fm-test-run.zEm7vl/w3/tmp/fm-spawn-pool-base-freshen.zSOkap/dirty-retry/project' && treehouse return --force '/private/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T/fm-test-run.zEm7vl/w3/tmp/fm-spawn-pool-base-freshen.zSOkap/dirty-retry/slots/1/project')
+exit=1
+# Retry after terminal loss
+$ bin/fm-spawn.sh pool-dirty-retry-r1 /private/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T/fm-test-run.zEm7vl/w3/tmp/fm-spawn-pool-base-freshen.zSOkap/dirty-retry/project --scout
+spawned pool-dirty-retry-r1 harness=codex kind=scout window=firstmate:fm-pool-dirty-retry-r1 worktree=/private/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T/fm-test-run.zEm7vl/w3/tmp/fm-spawn-pool-base-freshen.zSOkap/dirty-retry/slots/2/project
+exit=0
+Refused copy HEAD before=8ba56fcfa1b8fcf19b7cd744f860cf8d29da2449 after=8ba56fcfa1b8fcf19b7cd744f860cf8d29da2449
+Refused copy staged index before:
+100644 248d032f84c5b8ce411481462743cfe1e50b31ba 0	README.md
+after:
+100644 248d032f84c5b8ce411481462743cfe1e50b31ba 0	README.md
+Refused copy tracked edits before:
+diff --git a/README.md b/README.md
+index df967b9..aa348f6 100644
+--- a/README.md
++++ b/README.md
+@@ -1 +1,2 @@
+-base
++staged work
++unstaged work
+after:
+diff --git a/README.md b/README.md
+index df967b9..aa348f6 100644
+--- a/README.md
++++ b/README.md
+@@ -1 +1,2 @@
+-base
++staged work
++unstaged work
+Refused copy untracked file:
+untracked work
+Retry task record:
+window=firstmate:fm-pool-dirty-retry-r1
+endpoint_task_id=pool-dirty-retry-r1
+worktree=/private/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T/fm-test-run.zEm7vl/w3/tmp/fm-spawn-pool-base-freshen.zSOkap/dirty-retry/slots/2/project
+project=/private/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T/fm-test-run.zEm7vl/w3/tmp/fm-spawn-pool-base-freshen.zSOkap/dirty-retry/project
+harness=codex
+approval_mode=bypass
+kind=scout
+tasktmp=/tmp/fm-pool-dirty-retry-r1
+model=default
+effort=default
+spawn_gen=s1793667535.41628.9135
+ok - a dirty-copy refusal retains its lease and every edit while retry uses another copy
+# remote-seeded Treehouse spawn command
+$ FM_HOME=/private/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T/fm-test-run.zEm7vl/w3/tmp/fm-spawn-pool-base-freshen.zSOkap/remote-seeded/home bin/fm-spawn.sh pool-remote-seeded-r13 /private/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T/fm-test-run.zEm7vl/w3/tmp/fm-spawn-pool-base-freshen.zSOkap/remote-seeded/project --scout
+spawned pool-remote-seeded-r13 harness=codex kind=scout window=firstmate:fm-pool-remote-seeded-r13 worktree=/private/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T/fm-test-run.zEm7vl/w3/tmp/fm-spawn-pool-base-freshen.zSOkap/remote-seeded/pool
+exit=0
+published worktree=/private/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T/fm-test-run.zEm7vl/w3/tmp/fm-spawn-pool-base-freshen.zSOkap/remote-seeded/pool
+resolved project lock=/private/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T/fm-test-run.zEm7vl/w3/tmp/fm-spawn-pool-base-freshen.zSOkap/remote-seeded/home/state/.treehouse-project-0e50d180a1773babec3e034dcf3c5695883533e9.lock
+ok - a remote-seeded secondmate home allocates and launches from its Treehouse pool
+ok - a Treehouse slot claim names the launched task, refuses when unclaimable, and is dropped by a locked abort
+ok - a launch refused after its slot claim leaves the pool for a retry and a second task
+ok - a refused polytoken launch leaves its per-id paths alone while another spawn holds the per-id lock
+ok - a non-polytoken launch refused after its slot claim keeps main's abort behavior
+ok - the treehouse-get isolation refusal points only at what survives the abort
+# evidence begin: linked-home spawn, returned=primary
+$ bin/fm-spawn.sh pool-linked-primary-r12 /private/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T/fm-test-run.zEm7vl/w3/tmp/fm-spawn-pool-base-freshen.zSOkap/linked-primary/secondmate --scout
+error: treehouse get did not enter an isolated worktree within 60s (last seen '/private/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T/fm-test-run.zEm7vl/w3/tmp/fm-spawn-pool-base-freshen.zSOkap/linked-primary/project': it is the repository's primary checkout (its git dir is the spawning project's common git dir); spawning project '/private/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T/fm-test-run.zEm7vl/w3/tmp/fm-spawn-pool-base-freshen.zSOkap/linked-primary/secondmate'); inspect window firstmate:fm-pool-linked-primary-r12
+exit=1
+primary HEAD before=a69a97d3b0be493ce5b56b2c60035ac34060613e after=a69a97d3b0be493ce5b56b2c60035ac34060613e
+primary reflog before:
+a69a97d HEAD@{0}: commit (initial): initial
+primary reflog after:
+a69a97d HEAD@{0}: commit (initial): initial
+FETCH_HEAD absent
+task metadata absent
+# evidence end
+ok - linked spawning home: primary preserves the primary before any refresh
+# evidence begin: linked-home spawn, returned=primary-alias
+$ bin/fm-spawn.sh pool-linked-primary-alias-r12 /private/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T/fm-test-run.zEm7vl/w3/tmp/fm-spawn-pool-base-freshen.zSOkap/linked-primary-alias/secondmate --scout
+error: treehouse get did not enter an isolated worktree within 60s (last seen '/private/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T/fm-test-run.zEm7vl/w3/tmp/fm-spawn-pool-base-freshen.zSOkap/linked-primary-alias/primary-alias': it is the repository's primary checkout (its git dir is the spawning project's common git dir); spawning project '/private/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T/fm-test-run.zEm7vl/w3/tmp/fm-spawn-pool-base-freshen.zSOkap/linked-primary-alias/secondmate'); inspect window firstmate:fm-pool-linked-primary-alias-r12
+exit=1
+primary HEAD before=9e4b78f07a0f6dc583898a0888c6c33d75f70c47 after=9e4b78f07a0f6dc583898a0888c6c33d75f70c47
+primary reflog before:
+9e4b78f HEAD@{0}: commit (initial): initial
+primary reflog after:
+9e4b78f HEAD@{0}: commit (initial): initial
+FETCH_HEAD absent
+task metadata absent
+# evidence end
+ok - linked spawning home: primary-alias preserves the primary before any refresh
+# evidence begin: linked-home spawn, returned=spawning
+$ bin/fm-spawn.sh pool-linked-spawning-r12 /private/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T/fm-test-run.zEm7vl/w3/tmp/fm-spawn-pool-base-freshen.zSOkap/linked-spawning/secondmate --scout
+error: treehouse get did not enter an isolated worktree within 60s (last seen '/private/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T/fm-test-run.zEm7vl/w3/tmp/fm-spawn-pool-base-freshen.zSOkap/linked-spawning/secondmate': it is the spawning project itself; spawning project '/private/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T/fm-test-run.zEm7vl/w3/tmp/fm-spawn-pool-base-freshen.zSOkap/linked-spawning/secondmate'); inspect window firstmate:fm-pool-linked-spawning-r12
+exit=1
+primary HEAD before=e27f7e1a5a06babe3dc98939cb17460433845c5d after=e27f7e1a5a06babe3dc98939cb17460433845c5d
+primary reflog before:
+e27f7e1 HEAD@{0}: commit (initial): initial
+primary reflog after:
+e27f7e1 HEAD@{0}: commit (initial): initial
+FETCH_HEAD absent
+task metadata absent
+# evidence end
+ok - linked spawning home: spawning preserves the primary before any refresh
+# evidence begin: linked-home spawn, returned=scout
+$ bin/fm-spawn.sh pool-linked-scout-r12 /private/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T/fm-test-run.zEm7vl/w3/tmp/fm-spawn-pool-base-freshen.zSOkap/linked-scout/secondmate --scout
+spawned pool-linked-scout-r12 harness=codex kind=scout window=firstmate:fm-pool-linked-scout-r12 worktree=/private/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T/fm-test-run.zEm7vl/w3/tmp/fm-spawn-pool-base-freshen.zSOkap/linked-scout/pool
+exit=0
+primary HEAD before=7d2ca2f0971e49b7007bf549dd39484ef7c6c1bd after=7d2ca2f0971e49b7007bf549dd39484ef7c6c1bd
+primary reflog before:
+7d2ca2f HEAD@{0}: commit (initial): initial
+primary reflog after:
+7d2ca2f HEAD@{0}: commit (initial): initial
+FETCH_HEAD absent
+saved task metadata:
+window=firstmate:fm-pool-linked-scout-r12
+endpoint_task_id=pool-linked-scout-r12
+worktree=/private/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T/fm-test-run.zEm7vl/w3/tmp/fm-spawn-pool-base-freshen.zSOkap/linked-scout/pool
+project=/private/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T/fm-test-run.zEm7vl/w3/tmp/fm-spawn-pool-base-freshen.zSOkap/linked-scout/secondmate
+harness=codex
+approval_mode=bypass
+kind=scout
+tasktmp=/tmp/fm-pool-linked-scout-r12
+model=default
+effort=default
+spawn_gen=s1793667639.88584.7872
+worker HEAD=5d5ffb384e40ed81cdfd5c580cbde17a27ddda1b origin/main=5d5ffb384e40ed81cdfd5c580cbde17a27ddda1b
+# evidence end
+ok - linked spawning home: scout preserves the primary before any refresh
+# observed spawn: spawned pool-current-base-r1 harness=codex kind=ship mode=no-mistakes yolo=off window=firstmate:fm-pool-current-base-r1 worktree=/private/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T/fm-test-run.zEm7vl/w3/tmp/fm-spawn-pool-base-freshen.zSOkap/current-base/pool
+# observed base: HEAD=090e63b67de07e0d27964219459ef4ba4504a02d origin/main=090e63b67de07e0d27964219459ef4ba4504a02d advanced-main=must survive a newly spawned branch
+ok - a stale pooled worktree refreshes to current origin/main before a crew branch is created
+ok - --base-branch picks the copy's starting point and is recorded; a missing or local-only base refuses
+ok - a spawn refuses when --base-branch and the brief's Base branch lines disagree
+ok - a Base branch line in the captain's intent neither blocks nor redirects a spawn
+ok - a based scout on a forge=gerrit project is refused at spawn
+ok - a stale pooled worktree resolves and refreshes a non-main default branch
+# observed direct-pr spawn: spawned pool-direct-pr-r3 harness=codex kind=ship mode=direct-PR yolo=off window=firstmate:fm-pool-direct-pr-r3 worktree=/private/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T/fm-test-run.zEm7vl/w3/tmp/fm-spawn-pool-base-freshen.zSOkap/direct-pr/pool
+# observed scout spawn: spawned pool-scout-r3 harness=codex kind=scout window=firstmate:fm-pool-scout-r3 worktree=/private/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T/fm-test-run.zEm7vl/w3/tmp/fm-spawn-pool-base-freshen.zSOkap/scout/pool
+ok - direct-PR ships and scouts both refresh stale pooled worktrees before launch
+# observed dirty refusal: error: pooled worktree '/private/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T/fm-test-run.zEm7vl/w3/tmp/fm-spawn-pool-base-freshen.zSOkap/dirty-refusal/pool' is not clean; refusing to discard uncommitted work while refreshing its base; preserved=keep this local work
+ok - a dirty pooled worktree is refused without discarding its local work
+# observed unresolved-default refusal: error: could not resolve origin's current default branch for pooled worktree '/private/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T/fm-test-run.zEm7vl/w3/tmp/fm-spawn-pool-base-freshen.zSOkap/unresolved-default/pool'; refusing to launch from a potentially stale base
+ok - an unresolved remote default branch refuses the pooled worktree
+# observed unreachable-origin refusal: error: could not fetch origin for pooled worktree '/private/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T/fm-test-run.zEm7vl/w3/tmp/fm-spawn-pool-base-freshen.zSOkap/unreachable-origin/pool'; refusing to launch from a potentially stale base
+ok - an unreachable origin refuses a potentially stale pooled worktree
+# observed origin-less launch: spawned pool-originless-r6 harness=codex kind=ship mode=no-mistakes yolo=off window=firstmate:fm-pool-originless-r6 worktree=/private/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T/fm-test-run.zEm7vl/w3/tmp/fm-spawn-pool-base-freshen.zSOkap/originless/pool
+ok - an origin-less pooled worktree launches as-is, skipping the freshness gate
+ok - a dirty origin-less pooled worktree is refused without discarding its local work
+ok - an origin configuration without a URL refuses the pooled worktree
+ok - an empty origin configuration section refuses the pooled worktree
+ok - an empty-only included origin section documents the accepted detection boundary
+ok - an inactive conditional origin include leaves the pooled worktree origin-less
+# observed stale-pin refusal: error: submodule 'ui' is checked out at 27cec284ba605c38a8fcefff43bc325b611aefa3, but this base records 497e01e478c218dc822f53390f11cab3f8c9b8b2
+ok - an origin-less pool with a stale submodule pin refuses while naming both pins and no remedy
+ok - an unpushed submodule commit keeps the uncommitted-work refusal and survives it
+ok - work inside a submodule is still refused as uncommitted work, not called stale
+ok - a stale pin carrying real work is refused conservatively, never called stale
+ok - a stale pin beside other dirt yields the conservative refusal alone, with no stale-pin line
+ok - without the opt-in a local-only ship or a scout still starts from origin's tip while the primary leads
+# opted-in leading/no-mistakes: slot=bd86cb25d4e16e69c2b0ba9c0a3582685b29b016 review base=origin/main
+# opted-in leading/direct-PR: slot=98b7941b2f2a3ad1f841fd4d99415e3c4924ca0c review base=origin/main
+# opted-in leading/local-only: slot=e8948b73f12640b86c5ce2e50e1a16495aa97b80 review base=main
+# opted-in leading/scout: slot=77b7d138d52adbb988589071d0ca3514f5624330 review base=main
+# opted-in diverged/no-mistakes: slot=e49e8279b183fdb84bd77f5caf3099393398c0af review base=origin/main
+# opted-in diverged/direct-PR: slot=6dc2855342907c5c4d8640944f29d80ef9118bda review base=origin/main
+# opted-in diverged/local-only: slot=5f360804a837895788c7373f96be2ca479af7ab6 review base=origin/main
+# opted-in diverged/scout: slot=3bd31cfa4b142608f72d950d378049608bf31f3a review base=origin/main
+# opted-in trailing/no-mistakes: slot=b85da1ec73aec8354ab09b83fb99eb43b0d52be9 review base=origin/main
+# opted-in trailing/direct-PR: slot=25688899a4d2533e3ae6dc0662403904d04fb403 review base=origin/main
+# opted-in trailing/local-only: slot=67f20d79fad2eb9c7b6b27aaebb9f5f66d37cdf7 review base=origin/main
+# opted-in trailing/scout: slot=a4d9a34ed2e271d54b1c705deb36ef4a7181b4ff review base=origin/main
+ok - with the opt-in only a local-only ship or a scout leaves origin's tip, for a primary that strictly contains it, and the review starts where the slot did
+ok - with the opt-in a named base branch still starts from origin's copy
+ok - with the opt-in an unclean slot is still refused, untouched, before any base is chosen
+# all fm-spawn-pool-base-freshen tests passed
+FM_TEST_END 2026-11-03T01:12:52Z tests/fm-spawn-pool-base-freshen.test.sh exit=0 duration_ms=858289 gate_skip=false
+FM_TEST_BEGIN 2026-11-03T01:12:52Z tests/fm-treehouse-lease-e2e.test.sh family=real-herdr-gated expected_gate_skip=herdr
+🌳 Setting up worktree...
+🌳 Leased worktree at /private/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T/fm-treehouse-lease.zX2GvR/pools/.treehouse/project-77d796/2/project. Run 'treehouse return /private/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T/fm-treehouse-lease.zX2GvR/pools/.treehouse/project-77d796/2/project' to release it.
+# v3.1.8: paused=/private/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T/fm-treehouse-lease.zX2GvR/pools/.treehouse/project-77d796/1/project retry=/private/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T/fm-treehouse-lease.zX2GvR/pools/.treehouse/project-77d796/2/project before=4f24b97e49f15b8d8bbd455f02819d23dc9b4758 after=4f24b97e49f15b8d8bbd455f02819d23dc9b4758
+🌳 No stale worktrees to prune.
+ok - real Treehouse keeps the crashed owner copy and detached commit on retry and prune
+# Ordinary shell exit
+🌳 Setting up worktree...
+🌳 Entered worktree at /private/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T/fm-treehouse-lease.zX2GvR/pools/.treehouse/project-77d796/3/project. Type 'exit' to return.
+🌳 Leased worktree 3 at /private/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T/fm-treehouse-lease.zX2GvR/pools/.treehouse/project-77d796/3/project. Run 'treehouse return /private/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T/fm-treehouse-lease.zX2GvR/pools/.treehouse/project-77d796/3/project' to release it.
+🌳 Not returning /private/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T/fm-treehouse-lease.zX2GvR/pools/.treehouse/project-77d796/3/project to the pool: owner precondition failed: it is now durably leased (holder: "paused-scout"); leaving it exactly as it is.
+Exited worker copy=/private/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T/fm-treehouse-lease.zX2GvR/pools/.treehouse/project-77d796/3/project HEAD=6eebeef5f19b3304722ad948dd5e487e9d6948cb
+$ treehouse status --json
+[{"name":"1","path":"/private/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T/fm-treehouse-lease.zX2GvR/pools/.treehouse/project-77d796/1/project","status":"leased","branch":"","detached":true,"flavor":"git","lease_id":"02cbd72e08cf09c985a2669d951a8aa6","lease_holder":"paused-scout","leased_at":"2026-11-03T08:12:54.39268+07:00","processes":[]},{"name":"2","path":"/private/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T/fm-treehouse-lease.zX2GvR/pools/.treehouse/project-77d796/2/project","status":"leased","branch":"","detached":true,"flavor":"git","lease_id":"3a83fe095b95fee22f16cf73732343f0","lease_holder":"retry","leased_at":"2026-11-03T08:12:55.073684+07:00","processes":[]},{"name":"3","path":"/private/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T/fm-treehouse-lease.zX2GvR/pools/.treehouse/project-77d796/3/project","status":"leased","branch":"","detached":true,"flavor":"git","lease_id":"9255f26820214a8fd61905138299473f","lease_holder":"paused-scout","leased_at":"2026-11-03T08:12:56.48003+07:00","processes":[]}]
+$ treehouse return --force /private/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T/fm-treehouse-lease.zX2GvR/pools/.treehouse/project-77d796/1/project
+🌳 Worktree returned to pool.
+Explicitly returned copy HEAD before=4f24b97e49f15b8d8bbd455f02819d23dc9b4758 after=0c1cea53434de3fe40ebbb2aec87f3b3bb0453ed
+Other leased copy HEAD before=6eebeef5f19b3304722ad948dd5e487e9d6948cb after=6eebeef5f19b3304722ad948dd5e487e9d6948cb
+ok - lease takeover survives shell exit and only explicit return resets its copy
+FM_TEST_END 2026-11-03T01:12:57Z tests/fm-treehouse-lease-e2e.test.sh exit=0 duration_ms=5688 gate_skip=false
+FM_TEST_SUMMARY total=4 failed=1 skipped_gate=0 duration_ms=1797053
+FM_TEST_SUMMARY_FAMILY family=backend-dispatch count=1 duration_ms=187438 failed=1
+FM_TEST_SUMMARY_FAMILY family=real-herdr-gated count=1 duration_ms=5688 failed=0
+FM_TEST_SUMMARY_FAMILY family=session-bootstrap count=1 duration_ms=744801 failed=0
+FM_TEST_SUMMARY_FAMILY family=standalone count=1 duration_ms=858289 failed=0
+FM_TEST_SLOWEST rank=1 script=tests/fm-spawn-pool-base-freshen.test.sh duration_ms=858289
+FM_TEST_SLOWEST rank=2 script=tests/fm-bootstrap.test.sh duration_ms=744801
+FM_TEST_SLOWEST rank=3 script=tests/fm-backend-t3code.test.sh duration_ms=187438
+FM_TEST_SLOWEST rank=4 script=tests/fm-treehouse-lease-e2e.test.sh duration_ms=5688

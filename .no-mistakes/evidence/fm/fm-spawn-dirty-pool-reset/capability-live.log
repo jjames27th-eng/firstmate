@@ -1,0 +1,63 @@
+$ {run-worktree}/bin/fm-lab-home.sh create {run-worktree}/.test-live/capability/home
+{run-worktree}/.test-live/capability/home
+
+exit=0
+$ git init -q -b main {run-worktree}/.test-live/capability/project
+
+exit=0
+$ git add .
+
+exit=0
+$ git -c user.name=Proof -c user.email=proof@example.invalid commit -qm base
+
+exit=0
+$ treehouse --version
+v2.0.1
+
+exit=0
+$ {run-worktree}/bin/fm-bootstrap.sh
+OUTDATED: treehouse (installed: 2.0.1; requires treehouse lease support; upgrade: treehouse update)
+
+exit=0
+$ {run-worktree}/bin/fm-spawn.sh leaseproof-old {run-worktree}/.test-live/capability/project sleep 300 --scout --backend tmux
+fm-gate-refuse: gate agent lifecycle permitted only against lab home {run-worktree}/.test-live/capability/home
+error: treehouse requires treehouse lease support; upgrade: treehouse update; refusing to acquire an unprotected pooled copy
+
+exit=1
+Verified: no pooled allocation, no task metadata, and no endpoint acquisition.
+$ treehouse --version
+v3.1.5
+
+exit=0
+$ {run-worktree}/bin/fm-bootstrap.sh
+
+exit=0
+$ treehouse lease --help
+Mark an existing pool worktree, identified by its name (the number shown
+by 'treehouse status'), as durably leased using the same persistent lease
+state 'treehouse get --lease' writes.
+
+This is a state-only operation: lease never resets, fetches, cleans, or
+checks out the worktree, so it is safe on a slot that already holds live
+work. Use it to give a worktree acquired with plain 'get' - or created
+before leases existed - the same protection a leased acquisition has: a
+leased worktree is never handed out by a later get and never removed by
+prune or destroy, even with no process running inside it, until you release
+it with 'treehouse return <path>'.
+
+By default it prints only the worktree's absolute path to stdout; add --json
+for the lease identity and metadata. All banners go to stderr.
+
+Usage:
+  treehouse lease <name> [flags]
+
+Flags:
+  -h, --help                  help for lease
+      --json                  Print the lease as JSON
+      --lease-holder string   Optional label recorded as the lease holder (defaults to $TREEHOUSE_LEASE_HOLDER)
+
+Global Flags:
+      --root string   Worktree root directory, overriding TREEHOUSE_ROOT and config; relative paths (e.g. "." for an in-project pool) resolve from the repo root
+
+exit=0
+RESULT: real v2.0.1 is refused before allocation; installed v3.1.5 passes the bootstrap lease capability gate.

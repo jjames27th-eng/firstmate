@@ -1,0 +1,18 @@
+fm-gate-refuse: gate agent lifecycle permitted only against lab home {run-worktree}/.test-live/lease-failure/home
+worktree 1 is already leased (holder: "competing-writer")
+error: could not durably lease Treehouse pool slot {run-worktree}/.test-live/lease-failure/pool/.treehouse/project-3eeac0/1/project for task leaseproof-failure; refusing to refresh or launch; inspect window firstmate:fm-leaseproof-failure
+warning: durable lease protection is unconfirmed for {run-worktree}/.test-live/lease-failure/pool/.treehouse/project-3eeac0/1/project; exiting its Treehouse shell may discard uncommitted work.
+
+spawn_exit=1
+{"wt": "{run-worktree}/.test-live/lease-failure/pool/.treehouse/project-3eeac0/1/project", "lease": "\ud83c\udf33 Leased worktree 1 at {run-worktree}/.test-live/lease-failure/pool/.treehouse/project-3eeac0/1/project. Run 'treehouse return {run-worktree}/.test-live/lease-failure/pool/.treehouse/project-3eeac0/1/project' to release it.\n{run-worktree}/.test-live/lease-failure/pool/.treehouse/project-3eeac0/1/project\n"}
+HEAD=8b686b914bfd642e450bec273d9493f847d80782
+
+STATUS= M README.md
+
+CONTENT=base
+competing writer edit
+
+POOL=[{"name":"1","path":"{run-worktree}/.test-live/lease-failure/pool/.treehouse/project-3eeac0/1/project","status":"leased","branch":"","detached":true,"flavor":"git","lease_id":"53dad8506608bdd48aa6b6b80912ba4d","lease_holder":"competing-writer","leased_at":"2026-11-03T07:47:08.561049+07:00","processes":[{"pid":99969,"name":"bash"}]}]
+
+RESULT: no refresh or worker launch; failed protection is reported unconfirmed, with no false retained-lease claim.
+private tmux kill-server exit=0

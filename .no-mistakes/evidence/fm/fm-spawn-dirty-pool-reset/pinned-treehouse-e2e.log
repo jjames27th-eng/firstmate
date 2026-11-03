@@ -1,0 +1,23 @@
+FM_TEST_BEGIN 2026-11-03T00:48:26Z tests/fm-treehouse-lease-e2e.test.sh family=real-herdr-gated expected_gate_skip=herdr
+🌳 Setting up worktree...
+🌳 Leased worktree at /private/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T/fm-treehouse-lease.1M6Yuy/pools/.treehouse/project-b417a0/2/project. Run 'treehouse return /private/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T/fm-treehouse-lease.1M6Yuy/pools/.treehouse/project-b417a0/2/project' to release it.
+# v3.1.5: paused=/private/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T/fm-treehouse-lease.1M6Yuy/pools/.treehouse/project-b417a0/1/project retry=/private/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T/fm-treehouse-lease.1M6Yuy/pools/.treehouse/project-b417a0/2/project before=0ad2ff915815e838f0d5bc9fe5de14c62d8df8d8 after=0ad2ff915815e838f0d5bc9fe5de14c62d8df8d8
+🌳 No stale worktrees to prune.
+ok - real Treehouse keeps the crashed owner copy and detached commit on retry and prune
+# Ordinary shell exit
+🌳 Setting up worktree...
+🌳 Entered worktree at /private/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T/fm-treehouse-lease.1M6Yuy/pools/.treehouse/project-b417a0/3/project. Type 'exit' to return.
+🌳 Leased worktree 3 at /private/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T/fm-treehouse-lease.1M6Yuy/pools/.treehouse/project-b417a0/3/project. Run 'treehouse return /private/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T/fm-treehouse-lease.1M6Yuy/pools/.treehouse/project-b417a0/3/project' to release it.
+🌳 Not returning /private/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T/fm-treehouse-lease.1M6Yuy/pools/.treehouse/project-b417a0/3/project to the pool: owner precondition failed: it is now durably leased (holder: "paused-scout"); leaving it exactly as it is.
+Exited worker copy=/private/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T/fm-treehouse-lease.1M6Yuy/pools/.treehouse/project-b417a0/3/project HEAD=3276308e6be82fe48ac75e022c4a9ef027b7f0a1
+$ treehouse status --json
+[{"name":"1","path":"/private/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T/fm-treehouse-lease.1M6Yuy/pools/.treehouse/project-b417a0/1/project","status":"leased","branch":"","detached":true,"flavor":"git","lease_id":"f470bd530cea684c1b52db29d96b17bd","lease_holder":"paused-scout","leased_at":"2026-11-03T07:48:29.751948+07:00","processes":[]},{"name":"2","path":"/private/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T/fm-treehouse-lease.1M6Yuy/pools/.treehouse/project-b417a0/2/project","status":"leased","branch":"","detached":true,"flavor":"git","lease_id":"d2ad028838e55a845af1b0f0c45a0045","lease_holder":"retry","leased_at":"2026-11-03T07:48:30.525988+07:00","processes":[]},{"name":"3","path":"/private/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T/fm-treehouse-lease.1M6Yuy/pools/.treehouse/project-b417a0/3/project","status":"leased","branch":"","detached":true,"flavor":"git","lease_id":"3861cdcc472eba3d19f86530ee20be0a","lease_holder":"paused-scout","leased_at":"2026-11-03T07:48:32.134402+07:00","processes":[]}]
+$ treehouse return --force /private/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T/fm-treehouse-lease.1M6Yuy/pools/.treehouse/project-b417a0/1/project
+🌳 Worktree returned to pool.
+Explicitly returned copy HEAD before=0ad2ff915815e838f0d5bc9fe5de14c62d8df8d8 after=03e8565ac590929cb8211aee0d1f8b8250db6cf4
+Other leased copy HEAD before=3276308e6be82fe48ac75e022c4a9ef027b7f0a1 after=3276308e6be82fe48ac75e022c4a9ef027b7f0a1
+ok - lease takeover survives shell exit and only explicit return resets its copy
+FM_TEST_END 2026-11-03T00:48:33Z tests/fm-treehouse-lease-e2e.test.sh exit=0 duration_ms=7478 gate_skip=false
+FM_TEST_SUMMARY total=1 failed=0 skipped_gate=0 duration_ms=7754
+FM_TEST_SUMMARY_FAMILY family=real-herdr-gated count=1 duration_ms=7478 failed=0
+FM_TEST_SLOWEST rank=1 script=tests/fm-treehouse-lease-e2e.test.sh duration_ms=7478

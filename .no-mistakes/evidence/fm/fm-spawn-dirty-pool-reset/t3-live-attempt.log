@@ -1,0 +1,7 @@
+Workspace-local real T3 v0.1.0 package obtained; no operator T3 state or credentials accessed.
+$ bin/fm-spawn.sh leaseproof-old <scratch-project> codex --scout --backend t3code
+fm-gate-refuse: gate agent lifecycle permitted only against lab home {run-worktree}/.test-live/capability/home
+fm-t3-mcp: no T3 credential at {run-worktree}/.test-live/capability/home/config/t3code-token; the captain signs in with: bin/fm-t3-mcp.mjs login --access full-access
+
+exit=1
+Live spawn needs a captain-issued config/t3code-token. docs/t3code-backend.md reserves full-access sign-in to the captain; no such credential was supplied for this isolated home.

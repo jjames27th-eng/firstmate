@@ -1,0 +1,12 @@
+Only PIDs recorded by real Treehouse in this run were stopped.
+BEFORE
+  PID  PPID STAT COMMAND
+73225     1 S    /bin/bash -i -l
+74696 73225 S    sleep 300
+78123     1 S    /bin/bash -i -l
+80725 78123 S    sleep 300
+AFTER
+  PID  PPID STAT COMMAND
+Final private tmux probe exit=1
+no server running on {run-worktree}/.t/tmux-501/fm-lab
+Removed all scratch repositories, lab homes, sockets, downloaded tools, Python installation, and caches from the worktree. All launched command sessions have returned final exit statuses.
