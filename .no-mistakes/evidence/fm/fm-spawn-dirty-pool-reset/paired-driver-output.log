@@ -8,18 +8,10 @@ error: pooled worktree '{run-worktree}/.test-live/unpatched/pool/.treehouse/proj
 spawn_exit=1
 BEFORE EXIT {"head": "67a5230af7d26b33d68bb54e2d1a1f21f137f585", "status": " M README.md\n", "content": "base\noutside writer edit for unpatched\n", "pool": [{"name": "1", "path": "{run-worktree}/.test-live/unpatched/pool/.treehouse/project-268b6f/1/project", "status": "in-use", "branch": "", "detached": true, "flavor": "git", "lease_id": "", "lease_holder": "", "leased_at": null, "processes": [{"pid": 71333, "name": "bash"}]}]}
 AFTER EXIT BEFORE EMPTY ENTER
-
-The default interactive shell is now zsh.
-To update your account to use zsh, please run `chsh -s /bin/zsh`.
-For more details, please visit https://support.apple.com/kb/HT208050.
 bash-3.2$ treehouse get
 🌳 Setting up worktree...
 🌳 Entered worktree at {run-worktree}/.test-live/unpatched/
 pool/.treehouse/project-268b6f/1/project. Type 'exit' to return.
-
-The default interactive shell is now zsh.
-To update your account to use zsh, please run `chsh -s /bin/zsh`.
-For more details, please visit https://support.apple.com/kb/HT208050.
 bash-3.2$ exit
 logout
 🌳 Worktree has uncommitted changes.
@@ -46,18 +38,10 @@ Clean worktree and return to pool? [Y/n]
 
 AFTER EXIT PLUS ONE EMPTY ENTER {"head": "67a5230af7d26b33d68bb54e2d1a1f21f137f585", "status": "", "content": "base\n", "pool": [{"name": "1", "path": "{run-worktree}/.test-live/unpatched/pool/.treehouse/project-268b6f/1/project", "status": "available", "branch": "", "detached": true, "flavor": "git", "lease_id": "", "lease_holder": "", "leased_at": null, "processes": []}]}
 PANE
-
-The default interactive shell is now zsh.
-To update your account to use zsh, please run `chsh -s /bin/zsh`.
-For more details, please visit https://support.apple.com/kb/HT208050.
 bash-3.2$ treehouse get
 🌳 Setting up worktree...
 🌳 Entered worktree at {run-worktree}/.test-live/unpatched/
 pool/.treehouse/project-268b6f/1/project. Type 'exit' to return.
-
-The default interactive shell is now zsh.
-To update your account to use zsh, please run `chsh -s /bin/zsh`.
-For more details, please visit https://support.apple.com/kb/HT208050.
 bash-3.2$ exit
 logout
 🌳 Worktree has uncommitted changes.
@@ -109,20 +93,12 @@ warning: Treehouse lease for task leaseproof-patched on {run-worktree}/.test-liv
 After inspecting and deciding to discard that copy, release it explicitly: (cd '{run-worktree}/.test-live/patched/project' && treehouse return --force '{run-worktree}/.test-live/patched/pool/.treehouse/project-dfd662/1/project')
 
 spawn_exit=1
-BEFORE EXIT {"head": "719c8a77b0e4004ec31979b86f9d07423ed182e0", "status": " M README.md\n", "content": "base\noutside writer edit for patched\n", "pool": [{"name": "1", "path": "{run-worktree}/.test-live/patched/pool/.treehouse/project-dfd662/1/project", "status": "leased", "branch": "", "detached": true, "flavor": "git", "lease_id": "c303466af7f8ec377ade8155bb70164a", "lease_holder": "leaseproof-patched", "leased_at": "2026-11-03T07:45:53.581956+07:00", "processes": [{"pid": 75371, "name": "bash"}]}]}
+BEFORE EXIT {"head": "719c8a77b0e4004ec31979b86f9d07423ed182e0", "status": " M README.md\n", "content": "base\noutside writer edit for patched\n", "pool": [{"name": "1", "path": "{run-worktree}/.test-live/patched/pool/.treehouse/project-dfd662/1/project", "status": "leased", "branch": "", "detached": true, "flavor": "git", "lease_id": "c303466af7f8ec377ade8155bb70164a", "lease_holder": "leaseproof-patched", "leased_at": "2026-11-03T00:45:53.581956+00:00", "processes": [{"pid": 75371, "name": "bash"}]}]}
 AFTER EXIT BEFORE EMPTY ENTER
-
-The default interactive shell is now zsh.
-To update your account to use zsh, please run `chsh -s /bin/zsh`.
-For more details, please visit https://support.apple.com/kb/HT208050.
 bash-3.2$ treehouse get
 🌳 Setting up worktree...
 🌳 Entered worktree at {run-worktree}/.test-live/patched/po
 ol/.treehouse/project-dfd662/1/project. Type 'exit' to return.
-
-The default interactive shell is now zsh.
-To update your account to use zsh, please run `chsh -s /bin/zsh`.
-For more details, please visit https://support.apple.com/kb/HT208050.
 bash-3.2$ exit
 logout
 🌳 Not returning {run-worktree}/.test-live/patched/pool/.tr
@@ -147,20 +123,12 @@ bash-3.2$
 
 
 
-AFTER EXIT PLUS ONE EMPTY ENTER {"head": "719c8a77b0e4004ec31979b86f9d07423ed182e0", "status": " M README.md\n", "content": "base\noutside writer edit for patched\n", "pool": [{"name": "1", "path": "{run-worktree}/.test-live/patched/pool/.treehouse/project-dfd662/1/project", "status": "leased", "branch": "", "detached": true, "flavor": "git", "lease_id": "c303466af7f8ec377ade8155bb70164a", "lease_holder": "leaseproof-patched", "leased_at": "2026-11-03T07:45:53.581956+07:00", "processes": []}]}
+AFTER EXIT PLUS ONE EMPTY ENTER {"head": "719c8a77b0e4004ec31979b86f9d07423ed182e0", "status": " M README.md\n", "content": "base\noutside writer edit for patched\n", "pool": [{"name": "1", "path": "{run-worktree}/.test-live/patched/pool/.treehouse/project-dfd662/1/project", "status": "leased", "branch": "", "detached": true, "flavor": "git", "lease_id": "c303466af7f8ec377ade8155bb70164a", "lease_holder": "leaseproof-patched", "leased_at": "2026-11-03T00:45:53.581956+00:00", "processes": []}]}
 PANE
-
-The default interactive shell is now zsh.
-To update your account to use zsh, please run `chsh -s /bin/zsh`.
-For more details, please visit https://support.apple.com/kb/HT208050.
 bash-3.2$ treehouse get
 🌳 Setting up worktree...
 🌳 Entered worktree at {run-worktree}/.test-live/patched/po
 ol/.treehouse/project-dfd662/1/project. Type 'exit' to return.
-
-The default interactive shell is now zsh.
-To update your account to use zsh, please run `chsh -s /bin/zsh`.
-For more details, please visit https://support.apple.com/kb/HT208050.
 bash-3.2$ exit
 logout
 🌳 Not returning {run-worktree}/.test-live/patched/pool/.tr
@@ -203,15 +171,15 @@ model=default
 effort=default
 spawn_gen=s1793666762.77581.21069
 
-REFUSED COPY AFTER RETRY {"head": "719c8a77b0e4004ec31979b86f9d07423ed182e0", "status": " M README.md\n", "content": "base\noutside writer edit for patched\n", "pool": [{"name": "1", "path": "{run-worktree}/.test-live/patched/pool/.treehouse/project-dfd662/1/project", "status": "leased", "branch": "", "detached": true, "flavor": "git", "lease_id": "c303466af7f8ec377ade8155bb70164a", "lease_holder": "leaseproof-patched", "leased_at": "2026-11-03T07:45:53.581956+07:00", "processes": []}, {"name": "2", "path": "{run-worktree}/.test-live/patched/pool/.treehouse/project-dfd662/2/project", "status": "leased", "branch": "", "detached": true, "flavor": "git", "lease_id": "ac6f9dd1651659cc86e67238302c1e93", "lease_holder": "leaseproof-patched", "leased_at": "2026-11-03T07:46:01.622621+07:00", "processes": [{"pid": 78123, "name": "bash"}, {"pid": 80725, "name": "sleep"}]}]}
+REFUSED COPY AFTER RETRY {"head": "719c8a77b0e4004ec31979b86f9d07423ed182e0", "status": " M README.md\n", "content": "base\noutside writer edit for patched\n", "pool": [{"name": "1", "path": "{run-worktree}/.test-live/patched/pool/.treehouse/project-dfd662/1/project", "status": "leased", "branch": "", "detached": true, "flavor": "git", "lease_id": "c303466af7f8ec377ade8155bb70164a", "lease_holder": "leaseproof-patched", "leased_at": "2026-11-03T00:45:53.581956+00:00", "processes": []}, {"name": "2", "path": "{run-worktree}/.test-live/patched/pool/.treehouse/project-dfd662/2/project", "status": "leased", "branch": "", "detached": true, "flavor": "git", "lease_id": "ac6f9dd1651659cc86e67238302c1e93", "lease_holder": "leaseproof-patched", "leased_at": "2026-11-03T00:46:01.622621+00:00", "processes": [{"pid": 78123, "name": "bash"}, {"pid": 80725, "name": "sleep"}]}]}
 PRUNE
 🌳 No stale worktrees to prune.
 
-AFTER PRUNE {"head": "719c8a77b0e4004ec31979b86f9d07423ed182e0", "status": " M README.md\n", "content": "base\noutside writer edit for patched\n", "pool": [{"name": "1", "path": "{run-worktree}/.test-live/patched/pool/.treehouse/project-dfd662/1/project", "status": "leased", "branch": "", "detached": true, "flavor": "git", "lease_id": "c303466af7f8ec377ade8155bb70164a", "lease_holder": "leaseproof-patched", "leased_at": "2026-11-03T07:45:53.581956+07:00", "processes": []}, {"name": "2", "path": "{run-worktree}/.test-live/patched/pool/.treehouse/project-dfd662/2/project", "status": "leased", "branch": "", "detached": true, "flavor": "git", "lease_id": "ac6f9dd1651659cc86e67238302c1e93", "lease_holder": "leaseproof-patched", "leased_at": "2026-11-03T07:46:01.622621+07:00", "processes": [{"pid": 78123, "name": "bash"}, {"pid": 80725, "name": "sleep"}]}]}
+AFTER PRUNE {"head": "719c8a77b0e4004ec31979b86f9d07423ed182e0", "status": " M README.md\n", "content": "base\noutside writer edit for patched\n", "pool": [{"name": "1", "path": "{run-worktree}/.test-live/patched/pool/.treehouse/project-dfd662/1/project", "status": "leased", "branch": "", "detached": true, "flavor": "git", "lease_id": "c303466af7f8ec377ade8155bb70164a", "lease_holder": "leaseproof-patched", "leased_at": "2026-11-03T00:45:53.581956+00:00", "processes": []}, {"name": "2", "path": "{run-worktree}/.test-live/patched/pool/.treehouse/project-dfd662/2/project", "status": "leased", "branch": "", "detached": true, "flavor": "git", "lease_id": "ac6f9dd1651659cc86e67238302c1e93", "lease_holder": "leaseproof-patched", "leased_at": "2026-11-03T00:46:01.622621+00:00", "processes": [{"pid": 78123, "name": "bash"}, {"pid": 80725, "name": "sleep"}]}]}
 EXPLICIT PERSON-AUTHORIZED SCRATCH RELEASE
 🌳 Worktree returned to pool.
 
-AFTER EXPLICIT RELEASE {"head": "719c8a77b0e4004ec31979b86f9d07423ed182e0", "status": "", "content": "base\n", "pool": [{"name": "1", "path": "{run-worktree}/.test-live/patched/pool/.treehouse/project-dfd662/1/project", "status": "available", "branch": "", "detached": true, "flavor": "git", "lease_id": "", "lease_holder": "", "leased_at": null, "processes": []}, {"name": "2", "path": "{run-worktree}/.test-live/patched/pool/.treehouse/project-dfd662/2/project", "status": "leased", "branch": "", "detached": true, "flavor": "git", "lease_id": "ac6f9dd1651659cc86e67238302c1e93", "lease_holder": "leaseproof-patched", "leased_at": "2026-11-03T07:46:01.622621+07:00", "processes": [{"pid": 78123, "name": "bash"}, {"pid": 80725, "name": "sleep"}]}]}
+AFTER EXPLICIT RELEASE {"head": "719c8a77b0e4004ec31979b86f9d07423ed182e0", "status": "", "content": "base\n", "pool": [{"name": "1", "path": "{run-worktree}/.test-live/patched/pool/.treehouse/project-dfd662/1/project", "status": "available", "branch": "", "detached": true, "flavor": "git", "lease_id": "", "lease_holder": "", "leased_at": null, "processes": []}, {"name": "2", "path": "{run-worktree}/.test-live/patched/pool/.treehouse/project-dfd662/2/project", "status": "leased", "branch": "", "detached": true, "flavor": "git", "lease_id": "ac6f9dd1651659cc86e67238302c1e93", "lease_holder": "leaseproof-patched", "leased_at": "2026-11-03T00:46:01.622621+00:00", "processes": [{"pid": 78123, "name": "bash"}, {"pid": 80725, "name": "sleep"}]}]}
 AFTER EXPLICIT RELEASE REACQUIRED 🌳 Setting up worktree...
 🌳 Leased worktree at {run-worktree}/.test-live/patched/pool/.treehouse/project-dfd662/1/project. Run 'treehouse return {run-worktree}/.test-live/patched/pool/.treehouse/project-dfd662/1/project' to release it.
 {run-worktree}/.test-live/patched/pool/.treehouse/project-dfd662/1/project

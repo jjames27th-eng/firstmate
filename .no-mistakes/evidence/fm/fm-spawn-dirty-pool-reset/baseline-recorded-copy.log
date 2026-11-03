@@ -6,20 +6,20 @@ Command: TMPDIR="$PWD/.test-phase-tmp" FM_TEST_EVIDENCE=1 bash .test-phase-tmp/b
 Expected exit=1: old spawn assigns the recorded copy to another task.
 
 # Recorded secondmate copy (default-tip), initial spawn
-$ bin/fm-spawn.sh pool-paused-secondmate-default-tip-r1 /Users/james/.no-mistakes/worktrees/6b06b88933e4/01M5P477R3QKBCK7FXRWQP0HKX/.test-phase-tmp/fm-spawn-pool-base-freshen.o6V7rS/paused-secondmate-default-tip/project --scout
-spawned pool-paused-secondmate-default-tip-r1 harness=codex kind=scout window=firstmate:fm-pool-paused-secondmate-default-tip-r1 worktree=/Users/james/.no-mistakes/worktrees/6b06b88933e4/01M5P477R3QKBCK7FXRWQP0HKX/.test-phase-tmp/fm-spawn-pool-base-freshen.o6V7rS/paused-secondmate-default-tip/slots/1/project
+$ bin/fm-spawn.sh pool-paused-secondmate-default-tip-r1 {run-worktree}/.test-phase-tmp/fm-spawn-pool-base-freshen.o6V7rS/paused-secondmate-default-tip/project --scout
+spawned pool-paused-secondmate-default-tip-r1 harness=codex kind=scout window=firstmate:fm-pool-paused-secondmate-default-tip-r1 worktree={run-worktree}/.test-phase-tmp/fm-spawn-pool-base-freshen.o6V7rS/paused-secondmate-default-tip/slots/1/project
 exit=0
 Secondmate task record:
 kind=scout
-worktree=/Users/james/.no-mistakes/worktrees/6b06b88933e4/01M5P477R3QKBCK7FXRWQP0HKX/.test-phase-tmp/fm-spawn-pool-base-freshen.o6V7rS/paused-secondmate-default-tip/slots/1/project
-project=/Users/james/.no-mistakes/worktrees/6b06b88933e4/01M5P477R3QKBCK7FXRWQP0HKX/.test-phase-tmp/fm-spawn-pool-base-freshen.o6V7rS/paused-secondmate-default-tip/project
+worktree={run-worktree}/.test-phase-tmp/fm-spawn-pool-base-freshen.o6V7rS/paused-secondmate-default-tip/slots/1/project
+project={run-worktree}/.test-phase-tmp/fm-spawn-pool-base-freshen.o6V7rS/paused-secondmate-default-tip/project
 Protected copy lease holder:
-cat: /Users/james/.no-mistakes/worktrees/6b06b88933e4/01M5P477R3QKBCK7FXRWQP0HKX/.test-phase-tmp/fm-spawn-pool-base-freshen.o6V7rS/paused-secondmate-default-tip/slots/1/.test-treehouse-lease: No such file or directory
+cat: {run-worktree}/.test-phase-tmp/fm-spawn-pool-base-freshen.o6V7rS/paused-secondmate-default-tip/slots/1/.test-treehouse-lease: No such file or directory
 New task record:
 window=firstmate:fm-pool-paused-secondmate-default-tip-r1
 endpoint_task_id=pool-paused-secondmate-default-tip-r1
-worktree=/Users/james/.no-mistakes/worktrees/6b06b88933e4/01M5P477R3QKBCK7FXRWQP0HKX/.test-phase-tmp/fm-spawn-pool-base-freshen.o6V7rS/paused-secondmate-default-tip/slots/1/project
-project=/Users/james/.no-mistakes/worktrees/6b06b88933e4/01M5P477R3QKBCK7FXRWQP0HKX/.test-phase-tmp/fm-spawn-pool-base-freshen.o6V7rS/paused-secondmate-default-tip/project
+worktree={run-worktree}/.test-phase-tmp/fm-spawn-pool-base-freshen.o6V7rS/paused-secondmate-default-tip/slots/1/project
+project={run-worktree}/.test-phase-tmp/fm-spawn-pool-base-freshen.o6V7rS/paused-secondmate-default-tip/project
 harness=codex
 approval_mode=bypass
 kind=scout

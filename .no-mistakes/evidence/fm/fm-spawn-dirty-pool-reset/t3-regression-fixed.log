@@ -1,7 +1,7 @@
 FM_TEST_BEGIN 2026-11-03T00:52:16Z tests/fm-backend-t3code.test.sh family=backend-dispatch expected_gate_skip=none
-fm-afk-launch: away-posture record archived at /private/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T/fm-backend-t3code-tests.sD3KWT/restart-unknown-completed/home/state/afk-contracts/1793667138.afk-contract
+fm-afk-launch: away-posture record archived at {tmp}/fm-backend-t3code-tests.sD3KWT/restart-unknown-completed/home/state/afk-contracts/1793667138.afk-contract
 fm-afk-launch: away mode stopped; no daemon terminal was running, .afk cleared, and the posture record archived
-fm-afk-launch: away-posture record archived at /private/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T/fm-backend-t3code-tests.sD3KWT/restart-unknown-failed/home/state/afk-contracts/1793667149.afk-contract
+fm-afk-launch: away-posture record archived at {tmp}/fm-backend-t3code-tests.sD3KWT/restart-unknown-failed/home/state/afk-contracts/1793667149.afk-contract
 fm-afk-launch: away mode stopped; no daemon terminal was running, .afk cleared, and the posture record archived
 ok - native restart re-arms discarded T3 stale warnings exactly once and preserves delivered suppression
 ok - away housekeeping preserves unknown stale rechecks and reports possible wedges until work resumes

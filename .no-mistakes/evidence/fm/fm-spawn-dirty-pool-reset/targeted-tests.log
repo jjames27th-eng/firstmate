@@ -1,7 +1,7 @@
 FM_TEST_BEGIN 2026-11-03T00:43:01Z tests/fm-backend-t3code.test.sh family=backend-dispatch expected_gate_skip=none
-fm-afk-launch: away-posture record archived at /private/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T/fm-test-run.zEm7vl/w1/tmp/fm-backend-t3code-tests.vVzRcy/restart-unknown-completed/home/state/afk-contracts/1793666583.afk-contract
+fm-afk-launch: away-posture record archived at {tmp}/fm-test-run.zEm7vl/w1/tmp/fm-backend-t3code-tests.vVzRcy/restart-unknown-completed/home/state/afk-contracts/1793666583.afk-contract
 fm-afk-launch: away mode stopped; no daemon terminal was running, .afk cleared, and the posture record archived
-fm-afk-launch: away-posture record archived at /private/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T/fm-test-run.zEm7vl/w1/tmp/fm-backend-t3code-tests.vVzRcy/restart-unknown-failed/home/state/afk-contracts/1793666588.afk-contract
+fm-afk-launch: away-posture record archived at {tmp}/fm-test-run.zEm7vl/w1/tmp/fm-backend-t3code-tests.vVzRcy/restart-unknown-failed/home/state/afk-contracts/1793666588.afk-contract
 fm-afk-launch: away mode stopped; no daemon terminal was running, .afk cleared, and the posture record archived
 ok - native restart re-arms discarded T3 stale warnings exactly once and preserves delivered suppression
 ok - away housekeeping preserves unknown stale rechecks and reports possible wedges until work resumes
@@ -56,7 +56,7 @@ note: test_tracked_codex_overlay_recovery skipped: no Python 3.11+ (tomllib) int
 not ok - the refusal must name the policy table (missing: '[shell_environment_policy]')
 --- output ---
 warning: T3 telemetry at http://127.0.0.1:50754 is on; run the server that hosts Firstmate workers with T3CODE_TELEMETRY_ENABLED=false (docs/t3code-backend.md)
-error: /private/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T/fm-test-run.zEm7vl/w1/tmp/fm-backend-t3code-tests.vVzRcy/spawn-codex-tracked/spawn-project/.codex/config.toml: Python 3.11+ with tomllib is required to validate tracked configuration
+error: {tmp}/fm-test-run.zEm7vl/w1/tmp/fm-backend-t3code-tests.vVzRcy/spawn-codex-tracked/spawn-project/.codex/config.toml: Python 3.11+ with tomllib is required to validate tracked configuration
 FM_TEST_END 2026-11-03T00:46:08Z tests/fm-backend-t3code.test.sh exit=1 duration_ms=187438 gate_skip=false
 FM_TEST_BEGIN 2026-11-03T00:46:08Z tests/fm-bootstrap.test.sh family=session-bootstrap expected_gate_skip=none
 fatal: not a git repository (or any of the parent directories): .git
@@ -480,14 +480,14 @@ FM_TEST_END 2026-11-03T00:58:33Z tests/fm-bootstrap.test.sh exit=0 duration_ms=7
 FM_TEST_BEGIN 2026-11-03T00:58:33Z tests/fm-spawn-pool-base-freshen.test.sh family=standalone expected_gate_skip=none
 ok - old Treehouse, lease failure and path mismatch refuse before refreshing the base
 # Dirty-copy refusal
-$ bin/fm-spawn.sh pool-dirty-retry-r1 /private/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T/fm-test-run.zEm7vl/w3/tmp/fm-spawn-pool-base-freshen.zSOkap/dirty-retry/project --scout
-error: pooled worktree '/private/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T/fm-test-run.zEm7vl/w3/tmp/fm-spawn-pool-base-freshen.zSOkap/dirty-retry/slots/1/project' is not clean; refusing to discard uncommitted work while refreshing its base
-warning: Treehouse lease for task pool-dirty-retry-r1 on /private/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T/fm-test-run.zEm7vl/w3/tmp/fm-spawn-pool-base-freshen.zSOkap/dirty-retry/slots/1/project was left in place; a refusal never releases or resets its copy.
-After inspecting and deciding to discard that copy, release it explicitly: (cd '/private/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T/fm-test-run.zEm7vl/w3/tmp/fm-spawn-pool-base-freshen.zSOkap/dirty-retry/project' && treehouse return --force '/private/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T/fm-test-run.zEm7vl/w3/tmp/fm-spawn-pool-base-freshen.zSOkap/dirty-retry/slots/1/project')
+$ bin/fm-spawn.sh pool-dirty-retry-r1 {tmp}/fm-test-run.zEm7vl/w3/tmp/fm-spawn-pool-base-freshen.zSOkap/dirty-retry/project --scout
+error: pooled worktree '{tmp}/fm-test-run.zEm7vl/w3/tmp/fm-spawn-pool-base-freshen.zSOkap/dirty-retry/slots/1/project' is not clean; refusing to discard uncommitted work while refreshing its base
+warning: Treehouse lease for task pool-dirty-retry-r1 on {tmp}/fm-test-run.zEm7vl/w3/tmp/fm-spawn-pool-base-freshen.zSOkap/dirty-retry/slots/1/project was left in place; a refusal never releases or resets its copy.
+After inspecting and deciding to discard that copy, release it explicitly: (cd '{tmp}/fm-test-run.zEm7vl/w3/tmp/fm-spawn-pool-base-freshen.zSOkap/dirty-retry/project' && treehouse return --force '{tmp}/fm-test-run.zEm7vl/w3/tmp/fm-spawn-pool-base-freshen.zSOkap/dirty-retry/slots/1/project')
 exit=1
 # Retry after terminal loss
-$ bin/fm-spawn.sh pool-dirty-retry-r1 /private/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T/fm-test-run.zEm7vl/w3/tmp/fm-spawn-pool-base-freshen.zSOkap/dirty-retry/project --scout
-spawned pool-dirty-retry-r1 harness=codex kind=scout window=firstmate:fm-pool-dirty-retry-r1 worktree=/private/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T/fm-test-run.zEm7vl/w3/tmp/fm-spawn-pool-base-freshen.zSOkap/dirty-retry/slots/2/project
+$ bin/fm-spawn.sh pool-dirty-retry-r1 {tmp}/fm-test-run.zEm7vl/w3/tmp/fm-spawn-pool-base-freshen.zSOkap/dirty-retry/project --scout
+spawned pool-dirty-retry-r1 harness=codex kind=scout window=firstmate:fm-pool-dirty-retry-r1 worktree={tmp}/fm-test-run.zEm7vl/w3/tmp/fm-spawn-pool-base-freshen.zSOkap/dirty-retry/slots/2/project
 exit=0
 Refused copy HEAD before=8ba56fcfa1b8fcf19b7cd744f860cf8d29da2449 after=8ba56fcfa1b8fcf19b7cd744f860cf8d29da2449
 Refused copy staged index before:
@@ -517,8 +517,8 @@ untracked work
 Retry task record:
 window=firstmate:fm-pool-dirty-retry-r1
 endpoint_task_id=pool-dirty-retry-r1
-worktree=/private/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T/fm-test-run.zEm7vl/w3/tmp/fm-spawn-pool-base-freshen.zSOkap/dirty-retry/slots/2/project
-project=/private/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T/fm-test-run.zEm7vl/w3/tmp/fm-spawn-pool-base-freshen.zSOkap/dirty-retry/project
+worktree={tmp}/fm-test-run.zEm7vl/w3/tmp/fm-spawn-pool-base-freshen.zSOkap/dirty-retry/slots/2/project
+project={tmp}/fm-test-run.zEm7vl/w3/tmp/fm-spawn-pool-base-freshen.zSOkap/dirty-retry/project
 harness=codex
 approval_mode=bypass
 kind=scout
@@ -528,11 +528,11 @@ effort=default
 spawn_gen=s1793667535.41628.9135
 ok - a dirty-copy refusal retains its lease and every edit while retry uses another copy
 # remote-seeded Treehouse spawn command
-$ FM_HOME=/private/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T/fm-test-run.zEm7vl/w3/tmp/fm-spawn-pool-base-freshen.zSOkap/remote-seeded/home bin/fm-spawn.sh pool-remote-seeded-r13 /private/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T/fm-test-run.zEm7vl/w3/tmp/fm-spawn-pool-base-freshen.zSOkap/remote-seeded/project --scout
-spawned pool-remote-seeded-r13 harness=codex kind=scout window=firstmate:fm-pool-remote-seeded-r13 worktree=/private/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T/fm-test-run.zEm7vl/w3/tmp/fm-spawn-pool-base-freshen.zSOkap/remote-seeded/pool
+$ FM_HOME={tmp}/fm-test-run.zEm7vl/w3/tmp/fm-spawn-pool-base-freshen.zSOkap/remote-seeded/home bin/fm-spawn.sh pool-remote-seeded-r13 {tmp}/fm-test-run.zEm7vl/w3/tmp/fm-spawn-pool-base-freshen.zSOkap/remote-seeded/project --scout
+spawned pool-remote-seeded-r13 harness=codex kind=scout window=firstmate:fm-pool-remote-seeded-r13 worktree={tmp}/fm-test-run.zEm7vl/w3/tmp/fm-spawn-pool-base-freshen.zSOkap/remote-seeded/pool
 exit=0
-published worktree=/private/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T/fm-test-run.zEm7vl/w3/tmp/fm-spawn-pool-base-freshen.zSOkap/remote-seeded/pool
-resolved project lock=/private/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T/fm-test-run.zEm7vl/w3/tmp/fm-spawn-pool-base-freshen.zSOkap/remote-seeded/home/state/.treehouse-project-0e50d180a1773babec3e034dcf3c5695883533e9.lock
+published worktree={tmp}/fm-test-run.zEm7vl/w3/tmp/fm-spawn-pool-base-freshen.zSOkap/remote-seeded/pool
+resolved project lock={tmp}/fm-test-run.zEm7vl/w3/tmp/fm-spawn-pool-base-freshen.zSOkap/remote-seeded/home/state/.treehouse-project-0e50d180a1773babec3e034dcf3c5695883533e9.lock
 ok - a remote-seeded secondmate home allocates and launches from its Treehouse pool
 ok - a Treehouse slot claim names the launched task, refuses when unclaimable, and is dropped by a locked abort
 ok - a launch refused after its slot claim leaves the pool for a retry and a second task
@@ -540,8 +540,8 @@ ok - a refused polytoken launch leaves its per-id paths alone while another spaw
 ok - a non-polytoken launch refused after its slot claim keeps main's abort behavior
 ok - the treehouse-get isolation refusal points only at what survives the abort
 # evidence begin: linked-home spawn, returned=primary
-$ bin/fm-spawn.sh pool-linked-primary-r12 /private/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T/fm-test-run.zEm7vl/w3/tmp/fm-spawn-pool-base-freshen.zSOkap/linked-primary/secondmate --scout
-error: treehouse get did not enter an isolated worktree within 60s (last seen '/private/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T/fm-test-run.zEm7vl/w3/tmp/fm-spawn-pool-base-freshen.zSOkap/linked-primary/project': it is the repository's primary checkout (its git dir is the spawning project's common git dir); spawning project '/private/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T/fm-test-run.zEm7vl/w3/tmp/fm-spawn-pool-base-freshen.zSOkap/linked-primary/secondmate'); inspect window firstmate:fm-pool-linked-primary-r12
+$ bin/fm-spawn.sh pool-linked-primary-r12 {tmp}/fm-test-run.zEm7vl/w3/tmp/fm-spawn-pool-base-freshen.zSOkap/linked-primary/secondmate --scout
+error: treehouse get did not enter an isolated worktree within 60s (last seen '{tmp}/fm-test-run.zEm7vl/w3/tmp/fm-spawn-pool-base-freshen.zSOkap/linked-primary/project': it is the repository's primary checkout (its git dir is the spawning project's common git dir); spawning project '{tmp}/fm-test-run.zEm7vl/w3/tmp/fm-spawn-pool-base-freshen.zSOkap/linked-primary/secondmate'); inspect window firstmate:fm-pool-linked-primary-r12
 exit=1
 primary HEAD before=a69a97d3b0be493ce5b56b2c60035ac34060613e after=a69a97d3b0be493ce5b56b2c60035ac34060613e
 primary reflog before:
@@ -553,8 +553,8 @@ task metadata absent
 # evidence end
 ok - linked spawning home: primary preserves the primary before any refresh
 # evidence begin: linked-home spawn, returned=primary-alias
-$ bin/fm-spawn.sh pool-linked-primary-alias-r12 /private/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T/fm-test-run.zEm7vl/w3/tmp/fm-spawn-pool-base-freshen.zSOkap/linked-primary-alias/secondmate --scout
-error: treehouse get did not enter an isolated worktree within 60s (last seen '/private/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T/fm-test-run.zEm7vl/w3/tmp/fm-spawn-pool-base-freshen.zSOkap/linked-primary-alias/primary-alias': it is the repository's primary checkout (its git dir is the spawning project's common git dir); spawning project '/private/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T/fm-test-run.zEm7vl/w3/tmp/fm-spawn-pool-base-freshen.zSOkap/linked-primary-alias/secondmate'); inspect window firstmate:fm-pool-linked-primary-alias-r12
+$ bin/fm-spawn.sh pool-linked-primary-alias-r12 {tmp}/fm-test-run.zEm7vl/w3/tmp/fm-spawn-pool-base-freshen.zSOkap/linked-primary-alias/secondmate --scout
+error: treehouse get did not enter an isolated worktree within 60s (last seen '{tmp}/fm-test-run.zEm7vl/w3/tmp/fm-spawn-pool-base-freshen.zSOkap/linked-primary-alias/primary-alias': it is the repository's primary checkout (its git dir is the spawning project's common git dir); spawning project '{tmp}/fm-test-run.zEm7vl/w3/tmp/fm-spawn-pool-base-freshen.zSOkap/linked-primary-alias/secondmate'); inspect window firstmate:fm-pool-linked-primary-alias-r12
 exit=1
 primary HEAD before=9e4b78f07a0f6dc583898a0888c6c33d75f70c47 after=9e4b78f07a0f6dc583898a0888c6c33d75f70c47
 primary reflog before:
@@ -566,8 +566,8 @@ task metadata absent
 # evidence end
 ok - linked spawning home: primary-alias preserves the primary before any refresh
 # evidence begin: linked-home spawn, returned=spawning
-$ bin/fm-spawn.sh pool-linked-spawning-r12 /private/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T/fm-test-run.zEm7vl/w3/tmp/fm-spawn-pool-base-freshen.zSOkap/linked-spawning/secondmate --scout
-error: treehouse get did not enter an isolated worktree within 60s (last seen '/private/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T/fm-test-run.zEm7vl/w3/tmp/fm-spawn-pool-base-freshen.zSOkap/linked-spawning/secondmate': it is the spawning project itself; spawning project '/private/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T/fm-test-run.zEm7vl/w3/tmp/fm-spawn-pool-base-freshen.zSOkap/linked-spawning/secondmate'); inspect window firstmate:fm-pool-linked-spawning-r12
+$ bin/fm-spawn.sh pool-linked-spawning-r12 {tmp}/fm-test-run.zEm7vl/w3/tmp/fm-spawn-pool-base-freshen.zSOkap/linked-spawning/secondmate --scout
+error: treehouse get did not enter an isolated worktree within 60s (last seen '{tmp}/fm-test-run.zEm7vl/w3/tmp/fm-spawn-pool-base-freshen.zSOkap/linked-spawning/secondmate': it is the spawning project itself; spawning project '{tmp}/fm-test-run.zEm7vl/w3/tmp/fm-spawn-pool-base-freshen.zSOkap/linked-spawning/secondmate'); inspect window firstmate:fm-pool-linked-spawning-r12
 exit=1
 primary HEAD before=e27f7e1a5a06babe3dc98939cb17460433845c5d after=e27f7e1a5a06babe3dc98939cb17460433845c5d
 primary reflog before:
@@ -579,8 +579,8 @@ task metadata absent
 # evidence end
 ok - linked spawning home: spawning preserves the primary before any refresh
 # evidence begin: linked-home spawn, returned=scout
-$ bin/fm-spawn.sh pool-linked-scout-r12 /private/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T/fm-test-run.zEm7vl/w3/tmp/fm-spawn-pool-base-freshen.zSOkap/linked-scout/secondmate --scout
-spawned pool-linked-scout-r12 harness=codex kind=scout window=firstmate:fm-pool-linked-scout-r12 worktree=/private/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T/fm-test-run.zEm7vl/w3/tmp/fm-spawn-pool-base-freshen.zSOkap/linked-scout/pool
+$ bin/fm-spawn.sh pool-linked-scout-r12 {tmp}/fm-test-run.zEm7vl/w3/tmp/fm-spawn-pool-base-freshen.zSOkap/linked-scout/secondmate --scout
+spawned pool-linked-scout-r12 harness=codex kind=scout window=firstmate:fm-pool-linked-scout-r12 worktree={tmp}/fm-test-run.zEm7vl/w3/tmp/fm-spawn-pool-base-freshen.zSOkap/linked-scout/pool
 exit=0
 primary HEAD before=7d2ca2f0971e49b7007bf549dd39484ef7c6c1bd after=7d2ca2f0971e49b7007bf549dd39484ef7c6c1bd
 primary reflog before:
@@ -591,8 +591,8 @@ FETCH_HEAD absent
 saved task metadata:
 window=firstmate:fm-pool-linked-scout-r12
 endpoint_task_id=pool-linked-scout-r12
-worktree=/private/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T/fm-test-run.zEm7vl/w3/tmp/fm-spawn-pool-base-freshen.zSOkap/linked-scout/pool
-project=/private/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T/fm-test-run.zEm7vl/w3/tmp/fm-spawn-pool-base-freshen.zSOkap/linked-scout/secondmate
+worktree={tmp}/fm-test-run.zEm7vl/w3/tmp/fm-spawn-pool-base-freshen.zSOkap/linked-scout/pool
+project={tmp}/fm-test-run.zEm7vl/w3/tmp/fm-spawn-pool-base-freshen.zSOkap/linked-scout/secondmate
 harness=codex
 approval_mode=bypass
 kind=scout
@@ -603,7 +603,7 @@ spawn_gen=s1793667639.88584.7872
 worker HEAD=5d5ffb384e40ed81cdfd5c580cbde17a27ddda1b origin/main=5d5ffb384e40ed81cdfd5c580cbde17a27ddda1b
 # evidence end
 ok - linked spawning home: scout preserves the primary before any refresh
-# observed spawn: spawned pool-current-base-r1 harness=codex kind=ship mode=no-mistakes yolo=off window=firstmate:fm-pool-current-base-r1 worktree=/private/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T/fm-test-run.zEm7vl/w3/tmp/fm-spawn-pool-base-freshen.zSOkap/current-base/pool
+# observed spawn: spawned pool-current-base-r1 harness=codex kind=ship mode=no-mistakes yolo=off window=firstmate:fm-pool-current-base-r1 worktree={tmp}/fm-test-run.zEm7vl/w3/tmp/fm-spawn-pool-base-freshen.zSOkap/current-base/pool
 # observed base: HEAD=090e63b67de07e0d27964219459ef4ba4504a02d origin/main=090e63b67de07e0d27964219459ef4ba4504a02d advanced-main=must survive a newly spawned branch
 ok - a stale pooled worktree refreshes to current origin/main before a crew branch is created
 ok - --base-branch picks the copy's starting point and is recorded; a missing or local-only base refuses
@@ -611,16 +611,16 @@ ok - a spawn refuses when --base-branch and the brief's Base branch lines disagr
 ok - a Base branch line in the captain's intent neither blocks nor redirects a spawn
 ok - a based scout on a forge=gerrit project is refused at spawn
 ok - a stale pooled worktree resolves and refreshes a non-main default branch
-# observed direct-pr spawn: spawned pool-direct-pr-r3 harness=codex kind=ship mode=direct-PR yolo=off window=firstmate:fm-pool-direct-pr-r3 worktree=/private/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T/fm-test-run.zEm7vl/w3/tmp/fm-spawn-pool-base-freshen.zSOkap/direct-pr/pool
-# observed scout spawn: spawned pool-scout-r3 harness=codex kind=scout window=firstmate:fm-pool-scout-r3 worktree=/private/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T/fm-test-run.zEm7vl/w3/tmp/fm-spawn-pool-base-freshen.zSOkap/scout/pool
+# observed direct-pr spawn: spawned pool-direct-pr-r3 harness=codex kind=ship mode=direct-PR yolo=off window=firstmate:fm-pool-direct-pr-r3 worktree={tmp}/fm-test-run.zEm7vl/w3/tmp/fm-spawn-pool-base-freshen.zSOkap/direct-pr/pool
+# observed scout spawn: spawned pool-scout-r3 harness=codex kind=scout window=firstmate:fm-pool-scout-r3 worktree={tmp}/fm-test-run.zEm7vl/w3/tmp/fm-spawn-pool-base-freshen.zSOkap/scout/pool
 ok - direct-PR ships and scouts both refresh stale pooled worktrees before launch
-# observed dirty refusal: error: pooled worktree '/private/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T/fm-test-run.zEm7vl/w3/tmp/fm-spawn-pool-base-freshen.zSOkap/dirty-refusal/pool' is not clean; refusing to discard uncommitted work while refreshing its base; preserved=keep this local work
+# observed dirty refusal: error: pooled worktree '{tmp}/fm-test-run.zEm7vl/w3/tmp/fm-spawn-pool-base-freshen.zSOkap/dirty-refusal/pool' is not clean; refusing to discard uncommitted work while refreshing its base; preserved=keep this local work
 ok - a dirty pooled worktree is refused without discarding its local work
-# observed unresolved-default refusal: error: could not resolve origin's current default branch for pooled worktree '/private/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T/fm-test-run.zEm7vl/w3/tmp/fm-spawn-pool-base-freshen.zSOkap/unresolved-default/pool'; refusing to launch from a potentially stale base
+# observed unresolved-default refusal: error: could not resolve origin's current default branch for pooled worktree '{tmp}/fm-test-run.zEm7vl/w3/tmp/fm-spawn-pool-base-freshen.zSOkap/unresolved-default/pool'; refusing to launch from a potentially stale base
 ok - an unresolved remote default branch refuses the pooled worktree
-# observed unreachable-origin refusal: error: could not fetch origin for pooled worktree '/private/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T/fm-test-run.zEm7vl/w3/tmp/fm-spawn-pool-base-freshen.zSOkap/unreachable-origin/pool'; refusing to launch from a potentially stale base
+# observed unreachable-origin refusal: error: could not fetch origin for pooled worktree '{tmp}/fm-test-run.zEm7vl/w3/tmp/fm-spawn-pool-base-freshen.zSOkap/unreachable-origin/pool'; refusing to launch from a potentially stale base
 ok - an unreachable origin refuses a potentially stale pooled worktree
-# observed origin-less launch: spawned pool-originless-r6 harness=codex kind=ship mode=no-mistakes yolo=off window=firstmate:fm-pool-originless-r6 worktree=/private/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T/fm-test-run.zEm7vl/w3/tmp/fm-spawn-pool-base-freshen.zSOkap/originless/pool
+# observed origin-less launch: spawned pool-originless-r6 harness=codex kind=ship mode=no-mistakes yolo=off window=firstmate:fm-pool-originless-r6 worktree={tmp}/fm-test-run.zEm7vl/w3/tmp/fm-spawn-pool-base-freshen.zSOkap/originless/pool
 ok - an origin-less pooled worktree launches as-is, skipping the freshness gate
 ok - a dirty origin-less pooled worktree is refused without discarding its local work
 ok - an origin configuration without a URL refuses the pooled worktree
@@ -653,19 +653,19 @@ ok - with the opt-in an unclean slot is still refused, untouched, before any bas
 FM_TEST_END 2026-11-03T01:12:52Z tests/fm-spawn-pool-base-freshen.test.sh exit=0 duration_ms=858289 gate_skip=false
 FM_TEST_BEGIN 2026-11-03T01:12:52Z tests/fm-treehouse-lease-e2e.test.sh family=real-herdr-gated expected_gate_skip=herdr
 🌳 Setting up worktree...
-🌳 Leased worktree at /private/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T/fm-treehouse-lease.zX2GvR/pools/.treehouse/project-77d796/2/project. Run 'treehouse return /private/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T/fm-treehouse-lease.zX2GvR/pools/.treehouse/project-77d796/2/project' to release it.
-# v3.1.8: paused=/private/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T/fm-treehouse-lease.zX2GvR/pools/.treehouse/project-77d796/1/project retry=/private/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T/fm-treehouse-lease.zX2GvR/pools/.treehouse/project-77d796/2/project before=4f24b97e49f15b8d8bbd455f02819d23dc9b4758 after=4f24b97e49f15b8d8bbd455f02819d23dc9b4758
+🌳 Leased worktree at {tmp}/fm-treehouse-lease.zX2GvR/pools/.treehouse/project-77d796/2/project. Run 'treehouse return {tmp}/fm-treehouse-lease.zX2GvR/pools/.treehouse/project-77d796/2/project' to release it.
+# v3.1.8: paused={tmp}/fm-treehouse-lease.zX2GvR/pools/.treehouse/project-77d796/1/project retry={tmp}/fm-treehouse-lease.zX2GvR/pools/.treehouse/project-77d796/2/project before=4f24b97e49f15b8d8bbd455f02819d23dc9b4758 after=4f24b97e49f15b8d8bbd455f02819d23dc9b4758
 🌳 No stale worktrees to prune.
 ok - real Treehouse keeps the crashed owner copy and detached commit on retry and prune
 # Ordinary shell exit
 🌳 Setting up worktree...
-🌳 Entered worktree at /private/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T/fm-treehouse-lease.zX2GvR/pools/.treehouse/project-77d796/3/project. Type 'exit' to return.
-🌳 Leased worktree 3 at /private/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T/fm-treehouse-lease.zX2GvR/pools/.treehouse/project-77d796/3/project. Run 'treehouse return /private/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T/fm-treehouse-lease.zX2GvR/pools/.treehouse/project-77d796/3/project' to release it.
-🌳 Not returning /private/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T/fm-treehouse-lease.zX2GvR/pools/.treehouse/project-77d796/3/project to the pool: owner precondition failed: it is now durably leased (holder: "paused-scout"); leaving it exactly as it is.
-Exited worker copy=/private/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T/fm-treehouse-lease.zX2GvR/pools/.treehouse/project-77d796/3/project HEAD=6eebeef5f19b3304722ad948dd5e487e9d6948cb
+🌳 Entered worktree at {tmp}/fm-treehouse-lease.zX2GvR/pools/.treehouse/project-77d796/3/project. Type 'exit' to return.
+🌳 Leased worktree 3 at {tmp}/fm-treehouse-lease.zX2GvR/pools/.treehouse/project-77d796/3/project. Run 'treehouse return {tmp}/fm-treehouse-lease.zX2GvR/pools/.treehouse/project-77d796/3/project' to release it.
+🌳 Not returning {tmp}/fm-treehouse-lease.zX2GvR/pools/.treehouse/project-77d796/3/project to the pool: owner precondition failed: it is now durably leased (holder: "paused-scout"); leaving it exactly as it is.
+Exited worker copy={tmp}/fm-treehouse-lease.zX2GvR/pools/.treehouse/project-77d796/3/project HEAD=6eebeef5f19b3304722ad948dd5e487e9d6948cb
 $ treehouse status --json
-[{"name":"1","path":"/private/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T/fm-treehouse-lease.zX2GvR/pools/.treehouse/project-77d796/1/project","status":"leased","branch":"","detached":true,"flavor":"git","lease_id":"02cbd72e08cf09c985a2669d951a8aa6","lease_holder":"paused-scout","leased_at":"2026-11-03T08:12:54.39268+07:00","processes":[]},{"name":"2","path":"/private/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T/fm-treehouse-lease.zX2GvR/pools/.treehouse/project-77d796/2/project","status":"leased","branch":"","detached":true,"flavor":"git","lease_id":"3a83fe095b95fee22f16cf73732343f0","lease_holder":"retry","leased_at":"2026-11-03T08:12:55.073684+07:00","processes":[]},{"name":"3","path":"/private/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T/fm-treehouse-lease.zX2GvR/pools/.treehouse/project-77d796/3/project","status":"leased","branch":"","detached":true,"flavor":"git","lease_id":"9255f26820214a8fd61905138299473f","lease_holder":"paused-scout","leased_at":"2026-11-03T08:12:56.48003+07:00","processes":[]}]
-$ treehouse return --force /private/var/folders/k5/bgghp9854wz092fxzzx84skm0000gn/T/fm-treehouse-lease.zX2GvR/pools/.treehouse/project-77d796/1/project
+[{"name":"1","path":"{tmp}/fm-treehouse-lease.zX2GvR/pools/.treehouse/project-77d796/1/project","status":"leased","branch":"","detached":true,"flavor":"git","lease_id":"02cbd72e08cf09c985a2669d951a8aa6","lease_holder":"paused-scout","leased_at":"2026-11-03T01:12:54.39268+00:00","processes":[]},{"name":"2","path":"{tmp}/fm-treehouse-lease.zX2GvR/pools/.treehouse/project-77d796/2/project","status":"leased","branch":"","detached":true,"flavor":"git","lease_id":"3a83fe095b95fee22f16cf73732343f0","lease_holder":"retry","leased_at":"2026-11-03T01:12:55.073684+00:00","processes":[]},{"name":"3","path":"{tmp}/fm-treehouse-lease.zX2GvR/pools/.treehouse/project-77d796/3/project","status":"leased","branch":"","detached":true,"flavor":"git","lease_id":"9255f26820214a8fd61905138299473f","lease_holder":"paused-scout","leased_at":"2026-11-03T01:12:56.48003+00:00","processes":[]}]
+$ treehouse return --force {tmp}/fm-treehouse-lease.zX2GvR/pools/.treehouse/project-77d796/1/project
 🌳 Worktree returned to pool.
 Explicitly returned copy HEAD before=4f24b97e49f15b8d8bbd455f02819d23dc9b4758 after=0c1cea53434de3fe40ebbb2aec87f3b3bb0453ed
 Other leased copy HEAD before=6eebeef5f19b3304722ad948dd5e487e9d6948cb after=6eebeef5f19b3304722ad948dd5e487e9d6948cb

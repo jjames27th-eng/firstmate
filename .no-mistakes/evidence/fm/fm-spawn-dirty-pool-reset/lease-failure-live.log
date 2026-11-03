@@ -12,7 +12,7 @@ STATUS= M README.md
 CONTENT=base
 competing writer edit
 
-POOL=[{"name":"1","path":"{run-worktree}/.test-live/lease-failure/pool/.treehouse/project-3eeac0/1/project","status":"leased","branch":"","detached":true,"flavor":"git","lease_id":"53dad8506608bdd48aa6b6b80912ba4d","lease_holder":"competing-writer","leased_at":"2026-11-03T07:47:08.561049+07:00","processes":[{"pid":99969,"name":"bash"}]}]
+POOL=[{"name":"1","path":"{run-worktree}/.test-live/lease-failure/pool/.treehouse/project-3eeac0/1/project","status":"leased","branch":"","detached":true,"flavor":"git","lease_id":"53dad8506608bdd48aa6b6b80912ba4d","lease_holder":"competing-writer","leased_at":"2026-11-03T00:47:08.561049+00:00","processes":[{"pid":99969,"name":"bash"}]}]
 
 RESULT: no refresh or worker launch; failed protection is reported unconfirmed, with no false retained-lease claim.
 private tmux kill-server exit=0
