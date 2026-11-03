@@ -1,0 +1,45 @@
+stable: === t3 t3 v0.1.6 treehouse=v3.1.8
+stable: {"ok":false,"error":{"code":"capability_gate","message":"T3 0.1.6 at http://127.0.0.1:59599 lacks t3_thread_configuration, t3_pending_request_list, t3_pending_request_read, t3_pending_request_respond; backend=t3code needs a T3 with the Orchestrator V2 thread tools (docs/t3code-backend.md)","serverVe
+stable: fm-t3-mcp: T3 0.1.6 at http://127.0.0.1:59599 lacks t3_thread_configuration, t3_pending_request_list, t3_pending_request_read, t3_pending_request_respond; backend=t3code needs a T3 with the Orchestrator V2 thread tools (docs/t3code-backend.md)
+stable: login exit=4
+stable: {"ok":false,"error":{"code":"no_credential","message":"no T3 credential at $LAB/home/config/t3code-token; the captain signs in with: bin/fm-t3-mcp.mjs login --access full-access"}}
+stable: fm-t3-mcp: no T3 credential at $LAB/home/config/t3code-token; the captain signs in with: bin/fm-t3-mcp.mjs login --access full-access
+stable: 🌳 Worktree returned to pool.
+stable: recorded copy HEAD=291b61f54cda1b661b2da92c32f97ce59f26b126 origin/main=291b61f54cda1b661b2da92c32f97ce59f26b126
+stable: $ fm-spawn t3rec1 --scout --backend t3code
+stable: fm-gate-refuse: gate agent lifecycle permitted only against lab home $LAB/home
+stable: fm-t3-mcp: no T3 credential at $LAB/home/config/t3code-token; the captain signs in with: bin/fm-t3-mcp.mjs login --access full-access
+stable: exit=1
+stable: worktree=
+stable: {"name":"1","status":"available","lease_holder":""}
+stable: CHECK FAIL: T3 spawn launched (no double-lease abort)
+stable: CHECK FAIL: T3 task avoided the recorded copy
+stable: CHECK FAIL: recorded copy leased to paused task
+stable: RESULT t3 fails=3
+stable:                                      
+stable: 
+stable: [06:37:59.763] INFO (#8187): Approved an MCP client sign-in.
+stable:   { client: 'firstmate', access: 'full-access', method: 'pairing-code' }
+nightly: === t3 t3 v0.1.7-nightly.20261103.4106 treehouse=v3.1.8
+nightly: {"ok":false,"error":{"code":"capability_gate","message":"T3 0.1.7-nightly.20261103.4106 at http://127.0.0.1:59664 lacks t3_thread_configuration, t3_pending_request_list, t3_pending_request_read, t3_pending_request_respond; backend=t3code needs a T3 with the Orchestrator V2 thread tools (docs/t3code-
+nightly: fm-t3-mcp: T3 0.1.7-nightly.20261103.4106 at http://127.0.0.1:59664 lacks t3_thread_configuration, t3_pending_request_list, t3_pending_request_read, t3_pending_request_respond; backend=t3code needs a T3 with the Orchestrator V2 thread tools (docs/t3code-backend.md)
+nightly: login exit=4 attempts=2
+nightly: {"ok":false,"error":{"code":"no_credential","message":"no T3 credential at $LAB/home/config/t3code-token; the captain signs in with: bin/fm-t3-mcp.mjs login --access full-access"}}
+nightly: fm-t3-mcp: no T3 credential at $LAB/home/config/t3code-token; the captain signs in with: bin/fm-t3-mcp.mjs login --access full-access
+nightly: 🌳 Worktree returned to pool.
+nightly: recorded copy HEAD=f35cfcf3502a9932834f6e556fe3f402757cb809 origin/main=f35cfcf3502a9932834f6e556fe3f402757cb809
+nightly: $ fm-spawn t3rec1 --scout --backend t3code
+nightly: fm-gate-refuse: gate agent lifecycle permitted only against lab home $LAB/home
+nightly: fm-t3-mcp: no T3 credential at $LAB/home/config/t3code-token; the captain signs in with: bin/fm-t3-mcp.mjs login --access full-access
+nightly: exit=1
+nightly: worktree=
+nightly: {"name":"1","status":"available","lease_holder":""}
+nightly: CHECK FAIL: T3 spawn launched (no double-lease abort)
+nightly: CHECK FAIL: T3 task avoided the recorded copy
+nightly: CHECK FAIL: recorded copy leased to paused task
+nightly: RESULT t3 fails=3
+nightly:                                      
+nightly: 
+nightly: [06:38:51.414] INFO (#1351): Approved an MCP client sign-in.
+nightly:   { client: 'firstmate', access: 'full-access', method: 'pairing-code' }
+verified-0.0.46-nightly.20261010.2935: sign-in did not return within 6 minutes; attempt stopped.

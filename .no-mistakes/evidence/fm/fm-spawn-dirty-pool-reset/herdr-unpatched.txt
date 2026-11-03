@@ -1,0 +1,17 @@
+=== herdr unpatched treehouse=v3.1.8 herdr=herdr 0.9.5 session=fm-lab-*
+🌳 Worktree returned to pool.
+recorded copy=$LAB/pool/.treehouse/project-eaf1fc/1/project HEAD=f6fac84a63c90effe144141576065d5a2d3622c8 origin/main=f6fac84a63c90effe144141576065d5a2d3622c8
+{"name":"1","status":"available","lease_holder":""}
+$ fm-spawn hrec1 --backend herdr
+fm-gate-refuse: gate agent lifecycle permitted only against lab home $LAB/home
+warning: $LAB/home/data/hrec1/launch-brief.md records no ship branch; defaulting to legacy branch fm/hrec1
+warning: $LAB/home/data/hrec1/launch-brief.md records no delivery contract line (scaffolded before ship briefs recorded one); launching on the explicit --mode no-mistakes - confirm its definition of done matches
+🌳 Setting up worktree...
+🌳 Leased worktree at $LAB/pool/.treehouse/project-eaf1fc/1/project. Run 'treehouse return $LAB/pool/.treehouse/project-eaf1fc/1/project' to release it.
+spawned hrec1 harness=sh kind=ship mode=no-mistakes yolo=off window=fm-lab-rec-unpatched-96752-7694:w1:p2 worktree=$LAB/pool/.treehouse/project-eaf1fc/1/project
+exit=0
+worktree=$LAB/pool/.treehouse/project-eaf1fc/1/project
+window=fm-lab-rec-unpatched-96752-7694:w1:p2
+backend=herdr
+{"name":"1","status":"leased","lease_holder":"hrec1"}
+observed: herdr task copy REUSED recorded copy

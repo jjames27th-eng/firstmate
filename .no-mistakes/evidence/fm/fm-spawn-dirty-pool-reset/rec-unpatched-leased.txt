@@ -1,0 +1,26 @@
+=== unpatched mode=leased treehouse=v3.1.8
+🌳 Worktree returned to pool.
+paused record (in another home): kind=scout worktree=$LAB/pool/.treehouse/project-23a71f/1/project
+origin/main=d0b54eabc563ef2aa6def263a0ca0151cbd46f45 copyHEAD=d0b54eabc563ef2aa6def263a0ca0151cbd46f45
+--- BEFORE spawn
+HEAD=d0b54eabc563ef2aa6def263a0ca0151cbd46f45
+git status --short:
+README.md content:
+base
+treehouse status:
+{"name":"1","status":"leased","lease_holder":"original-holder","head_path":"1/project"}
+$ bin/fm-spawn.sh rec-unpatched-leased $LAB/project --scout
+fm-gate-refuse: gate agent lifecycle permitted only against lab home $LAB/home
+spawned rec-unpatched-leased harness=codex kind=scout window=firstmate:fm-rec-unpatched-leased worktree=$LAB/pool/.treehouse/project-23a71f/2/project
+exit=0
+new task worktree=$LAB/pool/.treehouse/project-23a71f/2/project
+--- AFTER spawn
+HEAD=d0b54eabc563ef2aa6def263a0ca0151cbd46f45
+git status --short:
+README.md content:
+base
+treehouse status:
+{"name":"1","status":"leased","lease_holder":"original-holder","head_path":"1/project"}
+{"name":"2","status":"in-use","lease_holder":"","head_path":"2/project"}
+observed: new task copy avoided recorded copy
+RESULT unpatched/leased fails=0

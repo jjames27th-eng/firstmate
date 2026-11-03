@@ -1,0 +1,33 @@
+=== patched mode=leased treehouse=v3.1.8
+🌳 Worktree returned to pool.
+paused record (in another home): kind=scout worktree=$LAB/pool/.treehouse/project-800570/1/project
+origin/main=aa3983ac6c4834e68bcb4dd01c7dda53c37c9508 copyHEAD=aa3983ac6c4834e68bcb4dd01c7dda53c37c9508
+--- BEFORE spawn
+HEAD=aa3983ac6c4834e68bcb4dd01c7dda53c37c9508
+git status --short:
+README.md content:
+base
+treehouse status:
+{"name":"1","status":"leased","lease_holder":"original-holder","head_path":"1/project"}
+$ bin/fm-spawn.sh rec-patched-leased $LAB/project --scout
+fm-gate-refuse: gate agent lifecycle permitted only against lab home $LAB/home
+🌳 Leased worktree 2 at $LAB/pool/.treehouse/project-800570/2/project. Run 'treehouse return $LAB/pool/.treehouse/project-800570/2/project' to release it.
+spawned rec-patched-leased harness=codex kind=scout window=firstmate:fm-rec-patched-leased worktree=$LAB/pool/.treehouse/project-800570/2/project
+exit=0
+new task worktree=$LAB/pool/.treehouse/project-800570/2/project
+--- AFTER spawn
+HEAD=aa3983ac6c4834e68bcb4dd01c7dda53c37c9508
+git status --short:
+README.md content:
+base
+treehouse status:
+{"name":"1","status":"leased","lease_holder":"original-holder","head_path":"1/project"}
+{"name":"2","status":"leased","lease_holder":"rec-patched-leased","head_path":"2/project"}
+CHECK PASS: spawn launched
+CHECK PASS: new task did not take the recorded copy
+CHECK PASS: recorded copy HEAD unchanged
+CHECK PASS: recorded copy lease holder is original-holder
+$ next spawn exit=0 worktree=$LAB/pool/.treehouse/project-800570/3/project
+CHECK PASS: next spawn also avoids it
+CHECK PASS: recorded copy HEAD still unchanged
+RESULT patched/leased fails=0

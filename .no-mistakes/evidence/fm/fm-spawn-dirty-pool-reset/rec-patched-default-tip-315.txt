@@ -1,0 +1,55 @@
+=== patched mode=default-tip treehouse=v3.1.5
+A new version of treehouse is available: v3.1.5 → v3.1.8
+Run "treehouse update" to update
+
+🌳 Worktree returned to pool.
+paused record (in another home): kind=scout worktree=$LAB/pool/.treehouse/project-560d99/1/project
+origin/main=80ed1187b4c523fbd9bfd853cb036e3b60acc2d2 copyHEAD=80ed1187b4c523fbd9bfd853cb036e3b60acc2d2
+--- BEFORE spawn
+HEAD=80ed1187b4c523fbd9bfd853cb036e3b60acc2d2
+git status --short:
+README.md content:
+base
+treehouse status:
+A new version of treehouse is available: v3.1.5 → v3.1.8
+Run "treehouse update" to update
+
+{"name":"1","status":"available","lease_holder":"","head_path":"1/project"}
+$ bin/fm-spawn.sh rec-patched-default-tip $LAB/project --scout
+fm-gate-refuse: gate agent lifecycle permitted only against lab home $LAB/home
+A new version of treehouse is available: v3.1.5 → v3.1.8
+Run "treehouse update" to update
+
+A new version of treehouse is available: v3.1.5 → v3.1.8
+Run "treehouse update" to update
+
+🌳 Leased worktree 1 at $LAB/pool/.treehouse/project-560d99/1/project. Run 'treehouse return $LAB/pool/.treehouse/project-560d99/1/project' to release it.
+A new version of treehouse is available: v3.1.5 → v3.1.8
+Run "treehouse update" to update
+
+🌳 Leased worktree 2 at $LAB/pool/.treehouse/project-560d99/2/project. Run 'treehouse return $LAB/pool/.treehouse/project-560d99/2/project' to release it.
+spawned rec-patched-default-tip harness=codex kind=scout window=firstmate:fm-rec-patched-default-tip worktree=$LAB/pool/.treehouse/project-560d99/2/project
+exit=0
+new task worktree=$LAB/pool/.treehouse/project-560d99/2/project
+--- AFTER spawn
+HEAD=80ed1187b4c523fbd9bfd853cb036e3b60acc2d2
+git status --short:
+README.md content:
+base
+treehouse status:
+A new version of treehouse is available: v3.1.5 → v3.1.8
+Run "treehouse update" to update
+
+{"name":"1","status":"leased","lease_holder":"paused-scout","head_path":"1/project"}
+{"name":"2","status":"leased","lease_holder":"rec-patched-default-tip","head_path":"2/project"}
+CHECK PASS: spawn launched
+CHECK PASS: new task did not take the recorded copy
+CHECK PASS: recorded copy HEAD unchanged
+A new version of treehouse is available: v3.1.5 → v3.1.8
+Run "treehouse update" to update
+
+CHECK PASS: recorded copy lease holder is paused-scout
+$ next spawn exit=0 worktree=$LAB/pool/.treehouse/project-560d99/3/project
+CHECK PASS: next spawn also avoids it
+CHECK PASS: recorded copy HEAD still unchanged
+RESULT patched/default-tip fails=0

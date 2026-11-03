@@ -1,0 +1,24 @@
+🌳 Worktree returned to pool.
+project root moved to $LAB/pool2; record still names old copy
+treehouse status now: []
+$ bin/fm-spawn.sh rec-rootchange
+fm-gate-refuse: gate agent lifecycle permitted only against lab home $LAB/home
+jq: error (at <stdin>:1): recorded copy missing from pool status
+error: Treehouse status has no single slot 1 for copy $LAB/pool/.treehouse/project-c8bcc7/1/project in task record $LAB/mate/state/paused-scout.meta
+error: could not protect locally recorded Treehouse copies; refusing to acquire or reset a pooled worktree
+exit=1
+CHECK PASS: spawn refused
+CHECK PASS: refusal names the blocking record
+CHECK PASS: refusal names the blocking copy
+CHECK PASS: refusal says it will not acquire
+files under new root: 3
+$LAB/pool2
+$LAB/pool2/.treehouse
+$LAB/pool2/.treehouse/project-c8bcc7
+$LAB/pool2/.treehouse/project-c8bcc7/treehouse-state.json
+$LAB/pool2/.treehouse/project-c8bcc7/treehouse-state.lock
+$LAB/pool2/.treehouse/project-c8bcc7/treehouse-state.key
+CHECK PASS: no copy acquired in new root
+CHECK PASS: no task record
+CHECK PASS: no worker window
+RESULT rootchange fails=0

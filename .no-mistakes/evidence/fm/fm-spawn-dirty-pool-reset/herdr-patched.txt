@@ -1,0 +1,60 @@
+=== herdr patched treehouse=v3.1.8 herdr=herdr 0.9.5 session=fm-lab-*
+🌳 Worktree returned to pool.
+recorded copy=$LAB/pool/.treehouse/project-7770e7/1/project HEAD=506134755d956206bcf7c4adb0486c08bfa83ce3 origin/main=506134755d956206bcf7c4adb0486c08bfa83ce3
+{"name":"1","status":"available","lease_holder":""}
+$ fm-spawn hrec1 --backend herdr
+fm-gate-refuse: gate agent lifecycle permitted only against lab home $LAB/home
+warning: $LAB/home/data/hrec1/launch-brief.md records no ship branch; defaulting to legacy branch fm/hrec1
+warning: $LAB/home/data/hrec1/launch-brief.md records no delivery contract line (scaffolded before ship briefs recorded one); launching on the explicit --mode no-mistakes - confirm its definition of done matches
+🌳 Leased worktree 1 at $LAB/pool/.treehouse/project-7770e7/1/project. Run 'treehouse return $LAB/pool/.treehouse/project-7770e7/1/project' to release it.
+🌳 Setting up worktree...
+🌳 Leased worktree at $LAB/pool/.treehouse/project-7770e7/2/project. Run 'treehouse return $LAB/pool/.treehouse/project-7770e7/2/project' to release it.
+spawned hrec1 harness=sh kind=ship mode=no-mistakes yolo=off window=fm-lab-rec-patched-4366-9598:w1:p2 worktree=$LAB/pool/.treehouse/project-7770e7/2/project
+exit=0
+worktree=$LAB/pool/.treehouse/project-7770e7/2/project
+window=fm-lab-rec-patched-4366-9598:w1:p2
+backend=herdr
+{"name":"1","status":"leased","lease_holder":"paused-scout"}
+{"name":"2","status":"leased","lease_holder":"hrec1"}
+CHECK PASS: fresh Herdr spawn launched (no double-lease abort)
+CHECK PASS: Herdr task avoided the recorded copy
+CHECK PASS: recorded copy leased to its paused task
+CHECK PASS: Herdr task holds its own lease once
+CHECK PASS: slot-owner claim written for Herdr task
+$ fm-spawn hdirty --backend herdr (outside writer edits after get --lease)
+fm-gate-refuse: gate agent lifecycle permitted only against lab home $LAB/home
+warning: $LAB/home/data/hdirty/launch-brief.md records no ship branch; defaulting to legacy branch fm/hdirty
+warning: $LAB/home/data/hdirty/launch-brief.md records no delivery contract line (scaffolded before ship briefs recorded one); launching on the explicit --mode no-mistakes - confirm its definition of done matches
+🌳 Setting up worktree...
+🌳 Leased worktree at $LAB/pool/.treehouse/project-7770e7/3/project. Run 'treehouse return $LAB/pool/.treehouse/project-7770e7/3/project' to release it.
+error: pooled worktree '$LAB/pool/.treehouse/project-7770e7/3/project' is not clean; refusing to discard uncommitted work while refreshing its base
+warning: the worktree $LAB/pool/.treehouse/project-7770e7/3/project stays leased to hdirty after the failed spawn; once inspected, run 'treehouse return --force $LAB/pool/.treehouse/project-7770e7/3/project' from $LAB/project
+exit=1
+CHECK PASS: outside writer produced a dirty refusal on Herdr path
+{"name":"1","status":"leased","lease_holder":"paused-scout"}
+{"name":"2","status":"leased","lease_holder":"hrec1"}
+{"name":"3","status":"leased","lease_holder":"hdirty"}
+refused copy HEAD=506134755d956206bcf7c4adb0486c08bfa83ce3
+ M README.md
+base
+outside writer edit hdirty
+CHECK PASS: Herdr refusal keeps the edit
+CHECK PASS: Herdr refusal keeps the lease
+CHECK PASS: Herdr refusal names explicit release
+$ RETRY fm-spawn hdirty
+exit=0
+worktree=$LAB/pool/.treehouse/project-7770e7/4/project
+fm-gate-refuse: gate agent lifecycle permitted only against lab home $LAB/home
+warning: $LAB/home/data/hdirty/launch-brief.md records no ship branch; defaulting to legacy branch fm/hdirty
+warning: $LAB/home/data/hdirty/launch-brief.md records no delivery contract line (scaffolded before ship briefs recorded one); launching on the explicit --mode no-mistakes - confirm its definition of done matches
+🌳 Setting up worktree...
+🌳 Leased worktree at $LAB/pool/.treehouse/project-7770e7/4/project. Run 'treehouse return $LAB/pool/.treehouse/project-7770e7/4/project' to release it.
+spawned hdirty harness=sh kind=ship mode=no-mistakes yolo=off window=fm-lab-rec-patched-4366-9598:w1:p4 worktree=$LAB/pool/.treehouse/project-7770e7/4/project
+{"name":"1","status":"leased","lease_holder":"paused-scout"}
+{"name":"2","status":"leased","lease_holder":"hrec1"}
+{"name":"3","status":"leased","lease_holder":"hdirty"}
+{"name":"4","status":"leased","lease_holder":"hdirty"}
+CHECK PASS: Herdr retry launched
+CHECK PASS: Herdr retry uses a different copy
+CHECK PASS: edit still intact after Herdr retry
+RESULT herdr fails=0

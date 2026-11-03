@@ -1,0 +1,14 @@
+🌳 Setting up worktree...
+🌳 Leased worktree at $SCRATCH/pools/.treehouse/project-f0cbcc/2/project. Run 'treehouse return $SCRATCH/pools/.treehouse/project-f0cbcc/2/project' to release it.
+# v3.1.5: paused=$SCRATCH/pools/.treehouse/project-f0cbcc/1/project retry=$SCRATCH/pools/.treehouse/project-f0cbcc/2/project before=467f9f1c5e6ff2dd0c290932b3657ee31b43f663 after=467f9f1c5e6ff2dd0c290932b3657ee31b43f663
+🌳 No stale worktrees to prune.
+ok - real Treehouse keeps the crashed owner copy and detached commit on retry and prune
+🌳 Worktree returned to pool.
+ok - lease takeover survives shell exit and only explicit return resets its copy
+🌳 Setting up worktree...
+🌳 Leased worktree at $SCRATCH/linked-pools/.treehouse/linked-project-65e187/1/linked-project. Run 'treehouse return $SCRATCH/linked-pools/.treehouse/linked-project-65e187/1/linked-project' to release it.
+🌳 Setting up worktree...
+🌳 Leased worktree at $SCRATCH/linked-pools/.treehouse/linked-project-65e187/2/linked-project. Run 'treehouse return $SCRATCH/linked-pools/.treehouse/linked-project-65e187/2/linked-project' to release it.
+🌳 Worktree returned to pool.
+🌳 Worktree returned to pool.
+ok - spawn protects a recorded copy whose pool root is reached through a symlink

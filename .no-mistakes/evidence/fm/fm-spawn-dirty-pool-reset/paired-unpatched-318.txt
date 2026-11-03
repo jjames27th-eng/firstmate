@@ -1,0 +1,66 @@
+=== unpatched source=f641b44b
+treehouse v3.1.8
+tmux socket under private lab dir; project/pool/home all under $LAB; HOME=$LAB/userhome
+$ bin/fm-spawn.sh proof-unpatched $LAB/project --scout
+fm-gate-refuse: gate agent lifecycle permitted only against lab home $LAB/home
+error: pooled worktree '$LAB/pool/.treehouse/project-ab52ba/1/project' is not clean; refusing to discard uncommitted work while refreshing its base
+spawn_exit=1
+path=$LAB/pool/.treehouse/project-ab52ba/1/project
+head=9149bd37ce8a5d6b0bc6f46dda872e11af6d9395
+status= M README.md
+CHECK PASS: spawn refused the dirty copy with exit 1
+CHECK PASS: refusal says the copy is not clean
+CHECK PASS: refusal published no task record
+--- BEFORE shell exit
+HEAD=9149bd37ce8a5d6b0bc6f46dda872e11af6d9395
+git status --short:
+ M README.md
+README.md content:
+base
+outside writer edit for proof-unpatched
+treehouse status:
+{"name":"1","status":"in-use","lease_holder":"","head_path":"1/project"}
+--- pane after typing exit:
+treehouse get
+lab$ treehouse get
+🌳 Setting up worktree...
+🌳 Entered worktree at $LAB/pool/.treehouse/project-ab52ba/1/project. Type 'exit' to return.
+lab$ exit
+logout
+🌳 Worktree has uncommitted changes.
+Clean worktree and return to pool? [Y/n] 
+--- pane after one empty Enter:
+treehouse get
+lab$ treehouse get
+🌳 Setting up worktree...
+🌳 Entered worktree at $LAB/pool/.treehouse/project-ab52ba/1/project. Type 'exit' to return.
+lab$ exit
+logout
+🌳 Worktree has uncommitted changes.
+Clean worktree and return to pool? [Y/n] 
+🌳 Worktree returned to pool.
+lab$ 
+--- AFTER shell exit plus empty Enter
+HEAD=9149bd37ce8a5d6b0bc6f46dda872e11af6d9395
+git status --short:
+README.md content:
+base
+treehouse status:
+{"name":"1","status":"available","lease_holder":"","head_path":"1/project"}
+CHECK PASS: bug reproduced: empty Enter discarded the edit
+window: 0: bash* (1 panes) [120x40] [layout aafd,120x40,0,0,0] @0 (active)
+$ RETRY bin/fm-spawn.sh proof-unpatched $LAB/project --scout
+fm-gate-refuse: gate agent lifecycle permitted only against lab home $LAB/home
+spawned proof-unpatched harness=codex kind=scout window=firstmate:fm-proof-unpatched worktree=$LAB/pool/.treehouse/project-ab52ba/1/project
+retry_exit=0
+retry worktree=$LAB/pool/.treehouse/project-ab52ba/1/project
+CHECK PASS: retry launched
+--- REFUSED COPY after retry
+HEAD=9149bd37ce8a5d6b0bc6f46dda872e11af6d9395
+git status --short:
+README.md content:
+base
+treehouse status:
+{"name":"1","status":"in-use","lease_holder":"","head_path":"1/project"}
+CHECK PASS: bug reproduced: retry reuses the refused copy
+RESULT unpatched fails=0

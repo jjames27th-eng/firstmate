@@ -1,0 +1,10 @@
+treehouse v2.0.1; lease --help exit: 1
+$ bin/fm-spawn.sh old-th
+fm-gate-refuse: gate agent lifecycle permitted only against lab home $LAB/home
+error: treehouse requires treehouse lease support; upgrade: treehouse update; refusing to acquire an unprotected pooled copy
+exit=1
+CHECK PASS: spawn refused on old Treehouse
+CHECK PASS: refusal names treehouse lease support
+CHECK PASS: no copy acquired
+CHECK PASS: no worker window
+RESULT old-th fails=0

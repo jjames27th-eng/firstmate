@@ -1,0 +1,117 @@
+=== patched source=5bcf2dc5
+treehouse v3.1.8
+tmux socket under private lab dir; project/pool/home all under $LAB; HOME=$LAB/userhome
+$ bin/fm-spawn.sh proof-patched $LAB/project --scout
+fm-gate-refuse: gate agent lifecycle permitted only against lab home $LAB/home
+🌳 Leased worktree 1 at $LAB/pool/.treehouse/project-9df83f/1/project. Run 'treehouse return $LAB/pool/.treehouse/project-9df83f/1/project' to release it.
+error: pooled worktree '$LAB/pool/.treehouse/project-9df83f/1/project' is not clean; refusing to discard uncommitted work while refreshing its base
+warning: Treehouse lease for task proof-patched on $LAB/pool/.treehouse/project-9df83f/1/project was left in place; a refusal never releases or resets its copy.
+After inspecting and deciding to discard that copy, release it explicitly: (cd '$LAB/project' && treehouse return --force '$LAB/pool/.treehouse/project-9df83f/1/project')
+spawn_exit=1
+path=$LAB/pool/.treehouse/project-9df83f/1/project
+head=3841e4a1b68b5d8f75ccb3a238a67c3279539029
+status= M README.md
+CHECK PASS: spawn refused the dirty copy with exit 1
+CHECK PASS: refusal says the copy is not clean
+CHECK PASS: refusal published no task record
+--- BEFORE shell exit
+HEAD=3841e4a1b68b5d8f75ccb3a238a67c3279539029
+git status --short:
+ M README.md
+README.md content:
+base
+outside writer edit for proof-patched
+treehouse status:
+{"name":"1","status":"leased","lease_holder":"proof-patched","head_path":"1/project"}
+--- pane after typing exit:
+treehouse get
+lab$ treehouse get
+🌳 Setting up worktree...
+🌳 Entered worktree at $LAB/pool/.treehouse/project-9df83f/1/project. Type 'exit' to return.
+lab$ exit
+logout
+🌳 Not returning $LAB/pool/.treehouse/project-9df83f/1/project to the pool: owner precondition failed: it is now durably leased (holder: "proof-patched"); leaving it exactly as it is.
+lab$ 
+--- pane after one empty Enter:
+treehouse get
+lab$ treehouse get
+🌳 Setting up worktree...
+🌳 Entered worktree at $LAB/pool/.treehouse/project-9df83f/1/project. Type 'exit' to return.
+lab$ exit
+logout
+🌳 Not returning $LAB/pool/.treehouse/project-9df83f/1/project to the pool: owner precondition failed: it is now durably leased (holder: "proof-patched"); leaving it exactly as it is.
+lab$ 
+lab$ 
+--- AFTER shell exit plus empty Enter
+HEAD=3841e4a1b68b5d8f75ccb3a238a67c3279539029
+git status --short:
+ M README.md
+README.md content:
+base
+outside writer edit for proof-patched
+treehouse status:
+{"name":"1","status":"leased","lease_holder":"proof-patched","head_path":"1/project"}
+CHECK PASS: edit survives shell exit plus empty Enter
+CHECK PASS: HEAD unchanged after exit plus Enter
+CHECK PASS: durable lease retained after exit
+window: 0: bash* (1 panes) [120x40] [layout aafd,120x40,0,0,0] @0 (active)
+$ RETRY bin/fm-spawn.sh proof-patched $LAB/project --scout
+fm-gate-refuse: gate agent lifecycle permitted only against lab home $LAB/home
+🌳 Leased worktree 2 at $LAB/pool/.treehouse/project-9df83f/2/project. Run 'treehouse return $LAB/pool/.treehouse/project-9df83f/2/project' to release it.
+spawned proof-patched harness=codex kind=scout window=firstmate:fm-proof-patched worktree=$LAB/pool/.treehouse/project-9df83f/2/project
+retry_exit=0
+retry worktree=$LAB/pool/.treehouse/project-9df83f/2/project
+CHECK PASS: retry launched
+--- REFUSED COPY after retry
+HEAD=3841e4a1b68b5d8f75ccb3a238a67c3279539029
+git status --short:
+ M README.md
+README.md content:
+base
+outside writer edit for proof-patched
+treehouse status:
+{"name":"1","status":"leased","lease_holder":"proof-patched","head_path":"1/project"}
+{"name":"2","status":"leased","lease_holder":"proof-patched","head_path":"2/project"}
+CHECK PASS: retry uses a different copy
+CHECK PASS: edit survives the retry
+$ treehouse prune
+🌳 No stale worktrees to prune.
+$ treehouse return <copy> (no --force, no holder)
+Worktree has uncommitted changes. Clean and return? [Y/n] 🌳 worktree not returned: it has uncommitted changes and the confirmation could not be answered (stdin reached EOF); prune will not reclaim this slot. Use treehouse return --force '$LAB/pool/.treehouse/project-9df83f/1/project' to clean and return it
+return_exit=3
+CHECK PASS: edit survives prune and plain return
+--- REFUSED COPY after prune and plain return
+HEAD=3841e4a1b68b5d8f75ccb3a238a67c3279539029
+git status --short:
+ M README.md
+README.md content:
+base
+outside writer edit for proof-patched
+treehouse status:
+{"name":"1","status":"leased","lease_holder":"proof-patched","head_path":"1/project"}
+{"name":"2","status":"leased","lease_holder":"proof-patched","head_path":"2/project"}
+$ another task bin/fm-spawn.sh proof-other
+exit=0
+fm-gate-refuse: gate agent lifecycle permitted only against lab home $LAB/home
+🌳 Leased worktree 3 at $LAB/pool/.treehouse/project-9df83f/3/project. Run 'treehouse return $LAB/pool/.treehouse/project-9df83f/3/project' to release it.
+spawned proof-other harness=codex kind=scout window=firstmate:fm-proof-other worktree=$LAB/pool/.treehouse/project-9df83f/3/project
+worktree=$LAB/pool/.treehouse/project-9df83f/3/project
+CHECK PASS: another task also avoids the refused copy
+$ (cd $LAB/project && treehouse return --force <copy>)
+🌳 Worktree returned to pool.
+release_exit=0
+--- REFUSED COPY after explicit release
+HEAD=3841e4a1b68b5d8f75ccb3a238a67c3279539029
+git status --short:
+README.md content:
+base
+treehouse status:
+{"name":"1","status":"available","lease_holder":"","head_path":"1/project"}
+{"name":"2","status":"leased","lease_holder":"proof-patched","head_path":"2/project"}
+{"name":"3","status":"leased","lease_holder":"proof-other","head_path":"3/project"}
+CHECK PASS: explicit release discards the edit
+$ next task bin/fm-spawn.sh proof-after-release
+exit=0
+worktree=$LAB/pool/.treehouse/project-9df83f/1/project
+CHECK PASS: released copy is reusable by the next spawn
+RESULT patched fails=0

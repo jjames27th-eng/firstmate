@@ -1,0 +1,12 @@
+=== patched + v2.0.1: treehouse v2.0.1, get --lease flag: 3, lease subcommand exit: 1
+bootstrap exit=0; treehouse lines:
+OUTDATED: treehouse (installed: 2.0.1; requires treehouse lease support; upgrade: treehouse update)
+=== patched + pinned v3.1.5: treehouse v3.1.5, get --lease flag: 4, lease subcommand exit: 0
+bootstrap exit=0; treehouse lines:
+(no treehouse line)
+=== patched + v3.1.8: treehouse v3.1.8, get --lease flag: 4, lease subcommand exit: 0
+bootstrap exit=0; treehouse lines:
+(no treehouse line)
+=== unpatched + v2.0.1: treehouse v2.0.1, get --lease flag: 3, lease subcommand exit: 1
+bootstrap exit=0; treehouse lines:
+(no treehouse line)

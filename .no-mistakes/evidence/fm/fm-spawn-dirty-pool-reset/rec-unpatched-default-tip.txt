@@ -1,0 +1,25 @@
+=== unpatched mode=default-tip treehouse=v3.1.8
+🌳 Worktree returned to pool.
+paused record (in another home): kind=scout worktree=$LAB/pool/.treehouse/project-071f75/1/project
+origin/main=e8b39073a7fafd64f45e32508b40cb4a2fee4df1 copyHEAD=e8b39073a7fafd64f45e32508b40cb4a2fee4df1
+--- BEFORE spawn
+HEAD=e8b39073a7fafd64f45e32508b40cb4a2fee4df1
+git status --short:
+README.md content:
+base
+treehouse status:
+{"name":"1","status":"available","lease_holder":"","head_path":"1/project"}
+$ bin/fm-spawn.sh rec-unpatched-default-tip $LAB/project --scout
+fm-gate-refuse: gate agent lifecycle permitted only against lab home $LAB/home
+spawned rec-unpatched-default-tip harness=codex kind=scout window=firstmate:fm-rec-unpatched-default-tip worktree=$LAB/pool/.treehouse/project-071f75/1/project
+exit=0
+new task worktree=$LAB/pool/.treehouse/project-071f75/1/project
+--- AFTER spawn
+HEAD=e8b39073a7fafd64f45e32508b40cb4a2fee4df1
+git status --short:
+README.md content:
+base
+treehouse status:
+{"name":"1","status":"in-use","lease_holder":"","head_path":"1/project"}
+observed: new task copy REUSED recorded copy
+RESULT unpatched/default-tip fails=0
